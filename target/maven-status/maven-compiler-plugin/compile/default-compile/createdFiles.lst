@@ -1,0 +1,9 @@
+com\art\service\UserService.class
+com\art\service\UserServiceImp.class
+com\art\init\HibernateConfig.class
+com\art\init\AppConfig.class
+com\art\model\User.class
+com\art\init\AppInit.class
+com\art\dao\UserDAOImp.class
+com\art\dao\AbstractDAO.class
+com\art\dao\UserDAO.class
