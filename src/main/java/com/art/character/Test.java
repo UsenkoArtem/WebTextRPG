@@ -1,16 +1,16 @@
 package com.art.character;
 
-/**
- * Created by Artem on 24.02.2017.
- */
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+
+@PropertySource(value = {"classpath:App.properties"})
 public class Test {
+    @Autowired
+    private static Environment environment;
+
     public static void main(String[] args) {
-        Player player = new Warrior("Artem");
-        Character character = new Character();
-        System.out.println(player);
-        player.addExp(100);
-        System.out.println(player);
-        player.addExp(300);
-        System.out.println(player);
+
+
     }
 }

@@ -4,10 +4,10 @@ package com.art.classWrapper;
  * Created by Artem on 25.02.2017.
  */
 public class Registration {
-    private  String login;
-    private  String password;
-    private  String email;
-    private  String className;
+    private String login;
+    private String password;
+    private String email;
+    private String className;
 
     public Registration(String login, String password, String email, String className) {
 

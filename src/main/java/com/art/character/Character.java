@@ -4,21 +4,20 @@ package com.art.character;
 /**
  * Класс который определяет всех югитов в игре
  */
-public class Character  extends  Stats{
-    private  String name;
-    private  int level;
 
-    private  int time;
+public class Character extends Stats {
+    private String name;
+    private int level;
 
-    public int getTime() {
-        return time;
+    public Character(String name, int level, int strength, int agility, int intelligence, int vitality) {
+    super(strength, agility, intelligence, vitality);
+    setName(name);
+    setLevel(level);
     }
 
-    public void setTime(int time) {
-        this.time = time;
+    public  Character() {
+
     }
-
-
     public String getName() {
 
         return name;
@@ -36,19 +35,28 @@ public class Character  extends  Stats{
         this.level = level;
     }
 
-    public Character()
-    {}
 
     public void calculateMana() {
-        int mana = 0 ;
+        int mana = 0;
         ///Формула для маны
         setMana(mana);
     }
-    public void calculateHealth() {}
-    public void calculateAttack() {}
-    public void calculateDefense() {}
-    public  void regenHealth() {}
-    public  void regenMana(){}
+
+    public void calculateHealth() {
+    }
+
+    public void calculateAttack() {
+    }
+
+    public void calculateDefense() {
+    }
+
+    public void regenHealth() {
+    }
+
+    public void regenMana() {
+    }
+
     @Override
     public String toString() {
         return "Character{" +

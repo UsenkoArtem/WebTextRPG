@@ -1,16 +1,15 @@
-
 package com.art.controller;
 
-import com.art.validation.RegValidation;
-import com.art.validation.SignInValidation;
-import com.art.character.Mage;
-import com.art.character.Player;
-import com.art.character.Rogue;
-import com.art.character.Warrior;
+import com.art.character.Heroes.Mage;
+import com.art.character.Heroes.Player;
+import com.art.character.Heroes.Rogue;
+import com.art.character.Heroes.Warrior;
 import com.art.classWrapper.Registration;
 import com.art.classWrapper.SignIn;
 import com.art.dao.UserDAO;
 import com.art.model.User;
+import com.art.validation.RegValidation;
+import com.art.validation.SignInValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
@@ -31,6 +30,7 @@ import javax.servlet.http.HttpServletRequest;
 @EnableTransactionManagement
 @Transactional
 public class UserController {
+
     @Autowired
     private HttpServletRequest req;
 
@@ -40,39 +40,23 @@ public class UserController {
     @Autowired
     private SignInValidation signInValidation;
 
-
-
     @Autowired
     private RegValidation regValidation;
-    @RequestMapping(value = "/",method = RequestMethod.GET)
-    public  String index (ModelMap map) {
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index(ModelMap map) {
+        if (req.getSession().getAttribute("name") != null) return "redirect:index";
         map.put("signIn", new SignIn());
-        return "SignIn";
+        return "signIn";
     }
-    @RequestMapping(value = "/registration",method = RequestMethod.GET)
-    public  String reg (ModelMap map ) {
-        map.put("registration",new Registration());
-        return "registration";
-    }
-    @RequestMapping(value = "/registration",method = RequestMethod.POST)
-    public  String newUser(ModelMap map , @ModelAttribute Registration registration , BindingResult result) {
-        regValidation.validate(registration,result);
-        if (result.hasErrors()) return "registration";
-        User user = new User();
-        user.setPassword(registration.getPassword());
-        user.setLogin(registration.getLogin());
-        user.setEmail(registration.getEmail());
-        user.setLevel(1);
-        if (registration.getClassName().isEmpty()) registration.setClassName("Warrior");
-        user.setType(registration.getClassName());
-        userDAO.addUser(user);
-        return "index";
-    }
-    @RequestMapping(value = "/SignIn",method = RequestMethod.POST)
-    public  String sigIn(ModelMap map , @ModelAttribute SignIn signIn, BindingResult result) {
+
+
+    @RequestMapping(value = "/signIn", method = RequestMethod.POST)
+    public String sigIn(ModelMap map, @ModelAttribute SignIn signIn, BindingResult result) {
+        if (req.getSession().getAttribute("name") != null) return "redirect:index";
         signInValidation.validate(signIn, result);
         if (result.hasErrors()) {
-            return "SignIn";
+            return "signIn";
         }
         User user = userDAO.findBylogin(signIn.getLogin());
         Player player;
@@ -89,33 +73,38 @@ public class UserController {
             player = null;
 
         }
-        req.getSession().setAttribute("name",player.getName());
-        req.getSession().setAttribute("type",player.getClass().getSimpleName());
-        req.getSession().setAttribute("user",player);
-        return "write";
+        req.getSession().setAttribute("name", player.getName());
+        req.getSession().setAttribute("type", player.getClass().getSimpleName());
+        req.getSession().setAttribute("user", player);
+
+        return "redirect:/index";
     }
 
-    @RequestMapping(value = "/1",method = RequestMethod.GET)
-    public  String write(ModelMap map) {
-        System.out.println(req.getSession().getAttribute("name"));
-        String name = req.getSession().getAttribute("type").toString();
-        Player player;
-        if (name.equals("Warrior")) {
-            player = (Warrior) req.getSession().getAttribute("user");
 
-        } else if (name.equals("Rogue")) {
-            player = (Rogue) req.getSession().getAttribute("user");
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String reg(ModelMap map) {
+        map.put("registration", new Registration());
+        return "registration";
+    }
 
-        } else if (name.equals("Mage")) {
-            player = (Mage) req.getSession().getAttribute("user");
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public String newUser(ModelMap map, @ModelAttribute Registration registration, BindingResult result) {
+        regValidation.validate(registration, result);
+        if (result.hasErrors()) return "registration";
+        User user = new User();
+        user.setPassword(registration.getPassword());
+        user.setLogin(registration.getLogin());
+        user.setEmail(registration.getEmail());
+        user.setLevel(1);
+        if (registration.getClassName().isEmpty()) registration.setClassName("Warrior");
+        user.setType(registration.getClassName());
+        userDAO.addUser(user);
+        return "redirect:/index";
+    }
 
-        } else {
-            player = null;
-
-        }
-
-        map.put("user",player.toString());
-        return  "write";
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String start(ModelMap map) {
+        return "index";
     }
 
 }

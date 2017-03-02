@@ -10,6 +10,16 @@ public class Stats {
     private int mana;
     private int defense;
 
+    public Stats() {
+    }
+
+    public Stats(int strength, int agility, int intelligence, int vitality) {
+        this.strength = strength;
+        this.agility = agility;
+        this.intelligence = intelligence;
+        this.vitality = vitality;
+    }
+
     @Override
     public String toString() {
         return "Stats{" +

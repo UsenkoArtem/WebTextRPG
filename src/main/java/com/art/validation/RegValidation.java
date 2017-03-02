@@ -12,6 +12,7 @@ import org.springframework.validation.Validator;
 public class RegValidation implements Validator {
     @Autowired
     UserDAO userDAO;
+
     @Override
     public boolean supports(Class<?> clazz) {
         return Registration.class.isAssignableFrom(clazz);
@@ -19,39 +20,32 @@ public class RegValidation implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-            Registration registration = (Registration) target;
+        Registration registration = (Registration) target;
 
-            if (registration.getLogin().isEmpty()) {
-                errors.rejectValue("login","RegForm.login.empty");
-             } else
-            if (registration.getLogin().length()<3) {
-                    errors.rejectValue("login","RegForm.login.MinSize");
-            } else
-            if (registration.getLogin().length()>10) {
-                errors.rejectValue("login","RegForm.login.MaxSize");
-            } else
-            if (userDAO.findBylogin(registration.getLogin())!=null) {
-                errors.rejectValue("login","RegForm.login.Duplication");
-            }
+        if (registration.getLogin().isEmpty()) {
+            errors.rejectValue("login", "RegForm.login.empty");
+        } else if (registration.getLogin().length() < 3) {
+            errors.rejectValue("login", "RegForm.login.MinSize");
+        } else if (registration.getLogin().length() > 10) {
+            errors.rejectValue("login", "RegForm.login.MaxSize");
+        } else if (userDAO.findBylogin(registration.getLogin()) != null) {
+            errors.rejectValue("login", "RegForm.login.Duplication");
+        }
 
         if (registration.getEmail().isEmpty()) {
-            errors.rejectValue("email","RegForm.email.empty");
-        } else
-            if (!EmailValidator.getInstance().isValid(registration.getEmail())) {
-                errors.rejectValue("email","RegForm.email.Incorrect");
-            } else
-        if (userDAO.findByEmail(registration.getEmail())!=null) {
-            errors.rejectValue("email","RegForm.email.Duplication");
+            errors.rejectValue("email", "RegForm.email.empty");
+        } else if (!EmailValidator.getInstance().isValid(registration.getEmail())) {
+            errors.rejectValue("email", "RegForm.email.Incorrect");
+        } else if (userDAO.findByEmail(registration.getEmail()) != null) {
+            errors.rejectValue("email", "RegForm.email.Duplication");
         }
 
         if (registration.getPassword().isEmpty()) {
-            errors.rejectValue("password","RegForm.password.empty");
-        } else
-        if (registration.getPassword().length()<6) {
-            errors.rejectValue("password","RegForm.password.MinSize");
-        } else
-        if (registration.getPassword().length()>10) {
-            errors.rejectValue("password","RegForm.password.MaxSize");
+            errors.rejectValue("password", "RegForm.password.empty");
+        } else if (registration.getPassword().length() < 6) {
+            errors.rejectValue("password", "RegForm.password.MinSize");
+        } else if (registration.getPassword().length() > 10) {
+            errors.rejectValue("password", "RegForm.password.MaxSize");
         }
     }
 }

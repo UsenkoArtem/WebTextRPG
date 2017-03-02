@@ -21,35 +21,29 @@ public class SignInValidation implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-    SignIn signIn = (SignIn) target;
+        SignIn signIn = (SignIn) target;
 
         if (signIn.getLogin().isEmpty()) {
-            errors.rejectValue("login","UserForm.login.empty");
-        } else
-        if (signIn.getLogin().length()>10) {
-            errors.rejectValue("login","UserForm.login.MaxSize");
-        } else
-        if (signIn.getLogin().length()<3) {
-            errors.rejectValue("login","UserForm.login.MinSize");
-        } else
-        if (userDAO.findBylogin(signIn.getLogin())==null) {
-            errors.rejectValue("login","UserForm.login.not");
+            errors.rejectValue("login", "UserForm.login.empty");
+        } else if (signIn.getLogin().length() > 10) {
+            errors.rejectValue("login", "UserForm.login.MaxSize");
+        } else if (signIn.getLogin().length() < 3) {
+            errors.rejectValue("login", "UserForm.login.MinSize");
+        } else if (userDAO.findBylogin(signIn.getLogin()) == null) {
+            errors.rejectValue("login", "UserForm.login.not");
         }
 
         if (signIn.getPassword().isEmpty()) {
-            errors.rejectValue("password","UserForm.password.empty");
-        } else
-        if (signIn.getPassword().length()>10) {
-            errors.rejectValue("password","UserForm.password.MaxSize");
-        } else
-        if (signIn.getPassword().length()<6) {
-            errors.rejectValue("password","UserForm.password.MinSize");
-         } else
-          if (userDAO.findBylogin(signIn.getLogin())!=null) {
-              User bylogin = userDAO.findBylogin(signIn.getLogin());
-              if (!bylogin.getPassword().equals(signIn.getPassword())) {
-                  errors.rejectValue("password","UserForm.password.Incorrect");
-              }
-          }
+            errors.rejectValue("password", "UserForm.password.empty");
+        } else if (signIn.getPassword().length() > 10) {
+            errors.rejectValue("password", "UserForm.password.MaxSize");
+        } else if (signIn.getPassword().length() < 6) {
+            errors.rejectValue("password", "UserForm.password.MinSize");
+        } else if (userDAO.findBylogin(signIn.getLogin()) != null) {
+            User bylogin = userDAO.findBylogin(signIn.getLogin());
+            if (!bylogin.getPassword().equals(signIn.getPassword())) {
+                errors.rejectValue("password", "UserForm.password.Incorrect");
+            }
+        }
     }
 }

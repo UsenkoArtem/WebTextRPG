@@ -12,7 +12,9 @@
     </facet>
     <facet type="hibernate" name="Hibernate">
       <configuration>
-        <datasource-map />
+        <datasource-map>
+          <unit-entry name="SessionFactory" value="1581861f-efd2-4950-bb26-ab7d94553785" />
+        </datasource-map>
         <naming-strategy-map />
       </configuration>
     </facet>

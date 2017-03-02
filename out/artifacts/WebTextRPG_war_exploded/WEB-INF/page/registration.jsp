@@ -1,6 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.concurrent.atomic.AtomicReference" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -8,6 +7,11 @@
 <head>
 
     <link href="<c:url value="/resource/css/Reg.css" />" rel="stylesheet">
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
     <title>Authorization</title>
 
 </head>

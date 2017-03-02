@@ -16,7 +16,7 @@
 <body>
 <div class="login-page">
     <div class="form">
-        <form:form method="POST" cssclass="login-form"  modelAttribute="signIn" action="/SignIn">
+        <form:form method="POST" cssclass="login-form"  modelAttribute="signIn" action="/signIn">
             <form:errors  path="login" cssClass="error"/>
             <form:input path="login" id="login" placeholder="username"/>
             <form:errors  path="password" cssClass="error"/>

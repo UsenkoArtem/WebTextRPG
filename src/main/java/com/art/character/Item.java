@@ -1,10 +1,9 @@
 package com.art.character;
-
-
 public class Item extends Stats {
     private int position;
     private String name;
     private String compatibility;
+    private int price;
     private int quality;
 
     public String getName() {
@@ -23,7 +22,6 @@ public class Item extends Stats {
         this.position = position;
     }
 
-
     public String getCompatibility() {
         return compatibility;
     }
@@ -32,12 +30,12 @@ public class Item extends Stats {
         this.compatibility = compatibility;
     }
 
-    public int getQuality() {
-        return quality;
+    public int getPrice() {
+        return price;
     }
 
-    public void setQuality(int quality) {
-        this.quality = quality;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     @Override
@@ -45,5 +43,13 @@ public class Item extends Stats {
         return "Item{" +
                 "position=" + position +
                 ", name='" + name + '\'' + super.toString();
+    }
+
+    public int getQuality() {
+        return quality;
+    }
+
+    public void setQuality(int quality) {
+        this.quality = quality;
     }
 }
