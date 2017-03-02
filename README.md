@@ -9,3 +9,4 @@ Simple web text based RPG project
 
 Описание проекта 
 Простая пошаговая основая на тексте MMOPRG игра. 
+![alt tag](https://raw.githubusercontent.com/UsenkoArtem/WebTextRPG/master/Uml.jpg)
