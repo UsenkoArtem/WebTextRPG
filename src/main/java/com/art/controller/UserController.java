@@ -43,7 +43,7 @@ public class UserController {
     public String index(ModelMap map) {
         if (req.getSession().getAttribute("name") != null) return "redirect:index";
         map.put("signIn", new SignIn());
-        return "signIn";
+        return "SignIn";
     }
 
 
@@ -52,7 +52,7 @@ public class UserController {
         if (req.getSession().getAttribute("name") != null) return "redirect:index";
         signInValidation.validate(signIn, result);
         if (result.hasErrors()) {
-            return "signIn";
+            return "SignIn";
         }
         User user = userDAO.findBylogin(signIn.getLogin());
         Player player;

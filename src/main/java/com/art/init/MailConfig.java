@@ -1,11 +1,12 @@
 package com.art.init;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Repository;
 
 import java.util.Properties;
-
+@Configuration
 @Repository
 public class MailConfig {
     @Bean
