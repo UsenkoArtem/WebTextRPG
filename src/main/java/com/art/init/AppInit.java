@@ -1,7 +1,7 @@
 package com.art.init;
 
 /**
- * Created by Artem on 02.01.2017.
+ Начальный класс с которого запускэться наш проккт на сервере
  */
 
 import org.springframework.web.WebApplicationInitializer;

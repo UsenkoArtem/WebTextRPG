@@ -1,20 +1,12 @@
 package com.art.init;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.Properties;
 
 @Repository
-@Configuration
-@ComponentScan(basePackages = "com.art")
-@EnableTransactionManagement
-@EnableWebMvc
 public class MailConfig {
     @Bean
     public JavaMailSenderImpl mailSender () {

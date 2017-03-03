@@ -7,6 +7,7 @@
           <file>file://$MODULE_DIR$/src/main/java/com/art/init/HibernateConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/com/art/init/MailConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/com/art/init/SpringMVCConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/art/init/EnemyConfig.java</file>
         </fileset>
       </configuration>
     </facet>

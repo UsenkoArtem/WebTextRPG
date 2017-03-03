@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by Artem on 25.02.2017.
+ * Сущстность таблицы User
  */
 @Entity
 public class User {
@@ -16,7 +16,8 @@ public class User {
     private String email;
     private int level;
     private String item;
-    private  String type;
+    private String type;
+
     @Basic
     @Column(name = "type")
     public String getType() {

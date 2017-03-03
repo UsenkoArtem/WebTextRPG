@@ -12,7 +12,6 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -23,7 +22,6 @@ import java.util.Properties;
 @Configuration
 @ComponentScan({"com.art.model"})
 @PropertySource(value = {"classpath:App.properties"})
-@EnableWebMvc
 @EnableTransactionManagement
 public class HibernateConfig {
     @Autowired
@@ -32,14 +30,14 @@ public class HibernateConfig {
     @Bean
     public LocalSessionFactoryBean SessionFactory () {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setDataSource(dataSourse());
+        sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan(new String[] {"com.art.model"});
-        sessionFactory.setHibernateProperties(hibernetProperies());
+        sessionFactory.setHibernateProperties(hibernateProperties());
         return  sessionFactory;
     }
 
 
-    private Properties hibernetProperies() {
+    private Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernet.dialect","org.hibernate.dialect.MySQLDialect");
         properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
@@ -48,7 +46,7 @@ public class HibernateConfig {
     }
 
     @Bean
-    public DataSource dataSourse() {
+    public DataSource dataSource() {
         DriverManagerDataSource dataSourse = new DriverManagerDataSource();
         dataSourse.setDriverClassName(environment.getRequiredProperty("jdbc.driverClass"));
         dataSourse.setUsername(environment.getRequiredProperty("jdbc.user"));
