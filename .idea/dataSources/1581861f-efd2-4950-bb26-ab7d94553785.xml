@@ -35,52 +35,69 @@
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="15" parent="9" name="level">
-      <Position>5</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="16" parent="9" name="item">
-      <Position>6</Position>
-      <DataType>varchar(255)|0</DataType>
-    </column>
-    <column id="17" parent="9" name="type">
-      <Position>7</Position>
-      <DataType>varchar(255)|0</DataType>
-    </column>
-    <index id="18" parent="9" name="user_login_uindex">
+    <index id="15" parent="9" name="user_login_uindex">
       <ColNames>login</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="19" parent="9" name="PRIMARY">
+    <key id="16" parent="9" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="20" parent="9" name="user_login_uindex">
+    <key id="17" parent="9" name="user_login_uindex">
       <ColNames>login</ColNames>
       <UnderlyingIndexName>user_login_uindex</UnderlyingIndexName>
     </key>
-    <column id="21" parent="10" name="id">
+    <foreign-key id="18" parent="9" name="user_userdetails_id_fk">
+      <ColNames>id</ColNames>
+      <RefSchemaName>rpg</RefSchemaName>
+      <RefTableName>userdetails</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="19" parent="10" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="22" parent="10" name="level">
+    <column id="20" parent="10" name="level">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="23" parent="10" name="type">
+    <column id="21" parent="10" name="type">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="24" parent="10" name="item">
+    <column id="22" parent="10" name="items">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="25" parent="10" name="PRIMARY">
+    <column id="23" parent="10" name="wearing_items">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="24" parent="10" name="strenght">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="25" parent="10" name="vitality">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="26" parent="10" name="agility">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="27" parent="10" name="intelligence">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="28" parent="10" name="Exp">
+      <Position>10</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="29" parent="10" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>

@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" build-on-make="true" name="WebTextRPG:war exploded">
+  <artifact type="exploded-war" name="WebTextRPG:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/WebTextRPG_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
@@ -48,8 +48,8 @@
           <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.8.3" />
           <element id="library" level="project" name="Maven: commons-digester:commons-digester:1.8" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.1.9.RELEASE" />
-          <element id="library" level="project" name="Maven: javax.servlet.jsp:javax.servlet.jsp-api:2.3.1" />
           <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
+          <element id="library" level="project" name="Maven: javax.servlet.jsp:javax.servlet.jsp-api:2.3.1" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="WebTextRPG/web/Web" />

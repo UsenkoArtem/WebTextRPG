@@ -1,12 +1,11 @@
 package com.art.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 
 /**
- * Сущстность таблицы User
+ * Created by Artem on 05.03.2017.
  */
 @Entity
 public class User {
@@ -14,22 +13,32 @@ public class User {
     private String login;
     private String password;
     private String email;
-    private int level;
-    private String item;
-    private String type;
+    private Userdetails userdetails;
 
-    @Basic
-    @Column(name = "type")
-    public String getType() {
-        return type;
+    public User(String login, String password, String email) {
+        this.login = login;
+        this.password = password;
+        this.email = email;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public User() {
     }
+
+    @OneToOne(mappedBy = "userById")
+    public Userdetails getUserdetails() {
+        return userdetails;
+    }
+
+    public void setUserdetails(Userdetails userdetails) {
+        this.userdetails = userdetails;
+    }
+
 
     @Id
-    @Column(name = "id")
+    @GenericGenerator(name = "generator",strategy = "foreign",
+            parameters = @org.hibernate.annotations.Parameter(name ="property", value ="userdetails" ))
+    @GeneratedValue(generator = "generator")
+    @Column(name = "id",nullable = true)
     public int getId() {
         return id;
     }
@@ -68,26 +77,6 @@ public class User {
         this.email = email;
     }
 
-    @Basic
-    @Column(name = "level")
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    @Basic
-    @Column(name = "item")
-    public String getItem() {
-        return item;
-    }
-
-    public void setItem(String item) {
-        this.item = item;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -96,11 +85,9 @@ public class User {
         User user = (User) o;
 
         if (id != user.id) return false;
-        if (level != user.level) return false;
         if (login != null ? !login.equals(user.login) : user.login != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        if (item != null ? !item.equals(user.item) : user.item != null) return false;
 
         return true;
     }
@@ -111,8 +98,6 @@ public class User {
         result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + level;
-        result = 31 * result + (item != null ? item.hashCode() : 0);
         return result;
     }
 }

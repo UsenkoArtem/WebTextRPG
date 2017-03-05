@@ -16,6 +16,7 @@ public class Player extends Character {
     }
 
     private List<Item> itemList ;
+    private List<Item> wearItem;
     private int money;
     private int exp;
 
@@ -102,5 +103,8 @@ public class Player extends Character {
     public   void levelUp() {
         setExp(getExp()-getLevel()*100);
         setLevel(getLevel()+1);
+    }
+
+    public void calculateItem(String items, String wearingItems) {
     }
 }

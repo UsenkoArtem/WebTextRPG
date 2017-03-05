@@ -8,6 +8,7 @@ import com.art.classWrapper.Registration;
 import com.art.classWrapper.SignIn;
 import com.art.dao.UserDAO;
 import com.art.model.User;
+import com.art.model.Userdetails;
 import com.art.validation.RegValidation;
 import com.art.validation.SignInValidation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,30 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @EnableWebMvc
 public class UserController {
+
+    private Player getPlayer(String type, String login, Userdetails userdetails) {
+        Player player;
+        if (type.equals("Warrior")) {
+            player = new Warrior(login);
+
+        } else if (type.equals("Rogue")) {
+            player = new Rogue(login);
+
+        } else if (type.equals("Mage")) {
+            player = new Mage(login);
+
+        } else {
+            player = null;
+
+        }
+        if (userdetails.getAgility()!=0)   player.setAgility(userdetails.getAgility());
+        if (userdetails.getStrenght()!=0)   player.setStrength(userdetails.getStrenght());
+        if (userdetails.getIntelligence()!=0)player.setIntelligence(userdetails.getIntelligence());
+        if (userdetails.getVitality()!=0) player.setVitality(userdetails.getVitality());
+        if (userdetails.getExp()!=0) player.setExp(userdetails.getExp());
+        player.calculateItem(userdetails.getItems(),userdetails.getWearingItems());
+        return player;
+    }
 
     @Autowired
     private HttpServletRequest req;
@@ -46,7 +71,6 @@ public class UserController {
         return "SignIn";
     }
 
-
     @RequestMapping(value = "/signIn", method = RequestMethod.POST)
     public String sigIn(ModelMap map, @ModelAttribute SignIn signIn, BindingResult result) {
         if (req.getSession().getAttribute("name") != null) return "redirect:index";
@@ -55,27 +79,13 @@ public class UserController {
             return "SignIn";
         }
         User user = userDAO.findBylogin(signIn.getLogin());
-        Player player;
-        if (user.getType().equals("Warrior")) {
-            player = new Warrior(user.getLogin());
-
-        } else if (user.getType().equals("Rogue")) {
-            player = new Rogue(user.getLogin());
-
-        } else if (user.getType().equals("Mage")) {
-            player = new Mage(user.getLogin());
-
-        } else {
-            player = null;
-
-        }
+        Player player = getPlayer(user.getUserdetails().getType(),user.getLogin(), user.getUserdetails());
         req.getSession().setAttribute("name", player.getName());
         req.getSession().setAttribute("type", player.getClass().getSimpleName());
         req.getSession().setAttribute("user", player);
-
+        System.out.println(player);
         return "redirect:/index";
     }
-
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String reg(ModelMap map) {
@@ -87,14 +97,21 @@ public class UserController {
     public String newUser(ModelMap map, @ModelAttribute Registration registration, BindingResult result) {
         regValidation.validate(registration, result);
         if (result.hasErrors()) return "registration";
-        User user = new User();
-        user.setPassword(registration.getPassword());
-        user.setLogin(registration.getLogin());
-        user.setEmail(registration.getEmail());
-        user.setLevel(1);
+        User user = new User(registration.getLogin(),registration.getPassword(),registration.getEmail());
+        Userdetails userdetails = new Userdetails();
+        userdetails.setLevel(1);
+        userdetails.setExp(0);
         if (registration.getClassName().isEmpty()) registration.setClassName("Warrior");
-        user.setType(registration.getClassName());
+        userdetails.setType(registration.getClassName());
+        Player player = getPlayer(userdetails.getType(),user.getLogin(),userdetails);
+        userdetails.setAgility(player.getAgility());
+        userdetails.setStrenght(player.getStrength());
+        userdetails.setIntelligence(player.getIntelligence());
+        userdetails.setVitality(player.getVitality());
+        user.setUserdetails(userdetails);
+        userdetails.setUserById(user);
         userDAO.addUser(user);
+        req.getSession().setAttribute("user", player);
         return "redirect:/index";
     }
 

@@ -45,6 +45,7 @@ public class Warrior extends Player {
                 ", mana=" + getMana() +
                 ", defense=" + getDefense() +
                 ", time=" + getTime() +
+                ". exp=" + getExp() +
                 '}';
     }
 
