@@ -9,4 +9,5 @@ public interface UserDAO {
     public void deleteUser(int id);
     public User findBylogin(String login);
     public User findByEmail(String email);
+    public void Update(User user);
 }

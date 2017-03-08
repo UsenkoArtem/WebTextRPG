@@ -16,6 +16,10 @@ public class Warrior extends Player {
         calculateDefense();
     }
 
+    public Warrior() {
+
+    }
+
     public   void levelUp() {
         while (getExp()>=getLevel()*100) {
             setExp(getExp() - getLevel() * 100);

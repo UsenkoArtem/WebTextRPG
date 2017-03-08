@@ -8,12 +8,14 @@
     <style>
         .error{
             color: red;
+            font-family: san-sarif;
         }
     </style>
     <title>SignIn</title>
 
-</head>
-<body>
+</head
+><body
+>
 <div class="login-page">
     <div class="form">
         <form:form method="POST" cssclass="login-form"  modelAttribute="signIn" action="/signIn">

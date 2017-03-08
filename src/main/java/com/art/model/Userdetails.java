@@ -2,9 +2,6 @@ package com.art.model;
 
 import javax.persistence.*;
 
-/**
- * Created by Artem on 05.03.2017.
- */
 @Entity
 public class Userdetails {
     private int id;
@@ -12,15 +9,37 @@ public class Userdetails {
     private String type;
     private String items;
     private String wearingItems;
+
+    @Override
+    public String toString() {
+        return "Userdetails{" +
+                "id=" + id +
+                ", level=" + level +
+                ", type='" + type + '\'' +
+                ", items='" + items + '\'' +
+                ", wearingItems='" + wearingItems + '\'' +
+                ", strenght=" + strenght +
+                ", vitality=" + vitality +
+                ", agility=" + agility +
+                ", intelligence=" + intelligence +
+
+                ", exp=" + exp +
+                ", point=" + point +
+                '}';
+    }
+
     private Integer strenght;
     private Integer vitality;
     private Integer agility;
     private Integer intelligence;
     private User userById;
     private int exp;
+    private int point;
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id",nullable = true)
+    @Column(name = "id", nullable = true)
     public int getId() {
         return id;
     }
@@ -28,14 +47,28 @@ public class Userdetails {
     public void setId(int id) {
         this.id = id;
     }
+
     @Basic
     @Column(name = "Exp")
     public int getExp() {
         return exp;
     }
+
     public void setExp(int exp) {
         this.exp = exp;
     }
+
+
+    @Basic
+    @Column(name = "Point")
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
+    }
+
 
     @Basic
     @Column(name = "level")

@@ -100,4 +100,15 @@ public class User {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", userdetails=" + userdetails +
+                '}';
+    }
 }

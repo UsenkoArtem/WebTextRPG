@@ -97,7 +97,11 @@
       <Position>10</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <key id="29" parent="10" name="PRIMARY">
+    <column id="29" parent="10" name="Point">
+      <Position>11</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="30" parent="10" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>

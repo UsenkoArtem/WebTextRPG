@@ -7,14 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 public class Player extends Character {
+    private int Point;
     private int time;
-    public int getTime() {
-        return time;
-    }
-    public void setTime(int time) {
-        this.time = time;
-    }
-
     private List<Item> itemList ;
     private List<Item> wearItem;
     private int money;
@@ -103,8 +97,23 @@ public class Player extends Character {
     public   void levelUp() {
         setExp(getExp()-getLevel()*100);
         setLevel(getLevel()+1);
+        setPoint(getPoint()+5);
     }
 
     public void calculateItem(String items, String wearingItems) {
+    }
+    public int getTime() {
+        return time;
+    }
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public int getPoint() {
+        return Point;
+    }
+
+    public void setPoint(int point) {
+        Point = point;
     }
 }

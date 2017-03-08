@@ -23,8 +23,8 @@
     <nav class="menu">
         <ul class="clearfix">
             <li class="current-item"><a href="/">Home</a></li>
-            <li><a href="#">Information</a></li>
-            <li ><a href="#">Exit</a></li>
+            <li><a href="inventory">Inventory</a></li>
+            <li ><a href="/exit">Exit</a></li>
         </ul>
     </nav>
 </div>

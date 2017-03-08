@@ -15,6 +15,10 @@ public class Rogue extends Player {
         calculateDefense();
     }
 
+    public Rogue() {
+
+    }
+
     @Override
     public String toString() {
         return "Rogue{" +

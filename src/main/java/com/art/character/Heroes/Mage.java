@@ -16,6 +16,10 @@ public class Mage extends Player {
         calculateDefense();
     }
 
+    public Mage() {
+
+    }
+
     @Override
     public String toString() {
         return "Mage{" +

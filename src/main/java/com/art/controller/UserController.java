@@ -19,13 +19,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.servlet.http.HttpServletRequest;
 
 @ComponentScan({"com.art"})
 @Controller
-@EnableWebMvc
 public class UserController {
 
     private Player getPlayer(String type, String login, Userdetails userdetails) {
@@ -48,7 +46,13 @@ public class UserController {
         if (userdetails.getIntelligence()!=0)player.setIntelligence(userdetails.getIntelligence());
         if (userdetails.getVitality()!=0) player.setVitality(userdetails.getVitality());
         if (userdetails.getExp()!=0) player.setExp(userdetails.getExp());
+        player.setLevel(userdetails.getLevel());
+        player.setPoint(userdetails.getPoint());
         player.calculateItem(userdetails.getItems(),userdetails.getWearingItems());
+        player.calculateAttack();
+        player.calculateHealth();
+        player.calculateMana();
+        player.calculateDefense();
         return player;
     }
 
@@ -101,6 +105,11 @@ public class UserController {
         Userdetails userdetails = new Userdetails();
         userdetails.setLevel(1);
         userdetails.setExp(0);
+        userdetails.setPoint(0);
+        userdetails.setAgility(0);
+        userdetails.setVitality(0);
+        userdetails.setIntelligence(0);
+        userdetails.setStrenght(0);
         if (registration.getClassName().isEmpty()) registration.setClassName("Warrior");
         userdetails.setType(registration.getClassName());
         Player player = getPlayer(userdetails.getType(),user.getLogin(),userdetails);
@@ -109,15 +118,25 @@ public class UserController {
         userdetails.setIntelligence(player.getIntelligence());
         userdetails.setVitality(player.getVitality());
         user.setUserdetails(userdetails);
-        userdetails.setUserById(user);
+       // userdetails.setUserById(user);
         userDAO.addUser(user);
+        req.getSession().setAttribute("name",user.getLogin());
         req.getSession().setAttribute("user", player);
+        req.getSession().setAttribute("type",player.getClass().getSimpleName());
         return "redirect:/index";
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String start(ModelMap map) {
         return "index";
+    }
+
+    @RequestMapping(value = "/exit",method = RequestMethod.GET)
+    public  String exit(ModelMap map ) {
+        req.getSession().removeAttribute("name");
+        req.getSession().removeAttribute("user");
+        req.getSession().removeAttribute("type");
+        return  "redirect: /";
     }
 
 }

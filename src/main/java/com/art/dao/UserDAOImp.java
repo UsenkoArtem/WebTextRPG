@@ -73,6 +73,9 @@ public class UserDAOImp implements  UserDAO {
         }
         return  user;
     }
-
+    @Override
+    public  void Update(User user) {
+        getSession().update(user);
+    }
 
 }
