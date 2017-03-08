@@ -4,22 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/art/character/Heroes" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="336c6cfb-9a8f-40ca-819e-0ac6d9d36299" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/AgilityEnemy.java" afterPath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/AgilityEnemy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Barrens/Cultist.java" afterPath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Barrens/Cultist.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Barrens/Demon.java" afterPath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Barrens/Demon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Barrens/Mummy.java" afterPath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Barrens/Mummy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Barrens/Scorpion.java" afterPath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Barrens/Scorpion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/IntelligenceEnemy.java" afterPath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/IntelligenceEnemy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/StrengthEnemy.java" afterPath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/StrengthEnemy.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Boneyarde/Ghost.java" afterPath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Boneyard/Ghost.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Boneyarde/Ghoul.java" afterPath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Boneyard/Ghoul.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Boneyarde/Necromancer.java" afterPath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Boneyard/Necromancer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Boneyarde/Skeleton.java" afterPath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Boneyard/Skeleton.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/FrozenHIlls/Sabletooth.java" afterPath="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/FrozenHIlls/Sabertooth.java" />
-    </list>
+    <list default="true" id="336c6cfb-9a8f-40ca-819e-0ac6d9d36299" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -116,7 +101,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Ghoul.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Ghoul.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Boneyard/Ghoul.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="220">
@@ -124,6 +109,16 @@
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="vcs.xml" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="66">
+                  <caret line="3" column="75" lean-forward="false" selection-start-line="3" selection-start-column="75" selection-end-line="3" selection-end-column="75" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -249,7 +244,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/web/WEB-INF/page/SignIn.jsp" />
         <option value="$PROJECT_DIR$/src/main/web/WEB-INF/page/registration.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/art/character/Privet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/art/character/Player.java" />
@@ -300,6 +294,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Barrens/Mummy.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Barrens/Demon.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/art/character/Enemies/Boneyard/Ghoul.java" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
       </list>
     </option>
   </component>
@@ -689,6 +684,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Barrens" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebTextRPG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebTextRPG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1268,12 +1277,12 @@
       <workItem from="1488616093501" duration="1168000" />
       <workItem from="1488732779744" duration="6644000" />
       <workItem from="1488976477774" duration="548000" />
-      <workItem from="1488987122079" duration="5449000" />
+      <workItem from="1488987122079" duration="5877000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47750000" />
+    <option name="totallyTimeSpent" value="48178000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1351,7 +1360,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/web/resource/image/sprites/Images/Enemies/Boneyard/skeleton2.png" />
     <entry file="file://$PROJECT_DIR$/src/main/web/resource/image/sprites/Images/Enemies/Boneyard/skeleton3.png" />
     <entry file="file://$PROJECT_DIR$/src/main/web/resource/image/sprites/Images/Enemies/Boneyard/undead_commander.png">
       <provider selected="true" editor-type-id="images">
@@ -1759,6 +1767,14 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="75" lean-forward="false" selection-start-line="3" selection-start-column="75" selection-end-line="3" selection-end-column="75" />
+          <folding />
         </state>
       </provider>
     </entry>
