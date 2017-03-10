@@ -34,13 +34,11 @@ public class Inventory {
         if (bylogin.getUserdetails().getPoint()<1) return "";
         bylogin.getUserdetails().setPoint(bylogin.getUserdetails().getPoint() - 1);
         bylogin.getUserdetails().setStrenght(bylogin.getUserdetails().getStrenght() + 1);
-        Player player = getPlayer(bylogin.getUserdetails().getType(),bylogin.getLogin(), bylogin.getUserdetails());
-        player.calculateHealth();
-        player.calculateAttack();
         userDetailsDAO.update(bylogin.getUserdetails());
+        Player player = getPlayer(bylogin.getUserdetails().getType(),bylogin.getLogin(), bylogin.getUserdetails());
+        player.addStrength(0);
         req.getSession().setAttribute("user", player);
-        String answer = Integer.toString(player.getAttack()) +" " + Integer.toString(player.getHealth());
-        System.out.println(answer);
+        String answer = player.getAttack() +" " + player.getHealth();
         return answer;
     }
     @RequestMapping(value = "/intelligence", method = RequestMethod.GET)
@@ -50,15 +48,12 @@ public class Inventory {
         User bylogin = userDAO.findBylogin(name);
         if (bylogin.getUserdetails().getPoint()<1) return "";
         bylogin.getUserdetails().setPoint(bylogin.getUserdetails().getPoint() - 1);
-        bylogin.getUserdetails().setIntelligence(bylogin.getUserdetails().getIntelligence() + 1);
-        Player player = getPlayer(bylogin.getUserdetails().getType(),bylogin.getLogin(), bylogin.getUserdetails());
-        player.calculateMana();
-        player.calculateAttack();
+        bylogin.getUserdetails().setIntelligence(bylogin.getUserdetails().getIntelligence()+1);
         userDetailsDAO.update(bylogin.getUserdetails());
-
+        Player player = getPlayer(bylogin.getUserdetails().getType(),bylogin.getLogin(), bylogin.getUserdetails());
+        player.addIntelligence(0);
         req.getSession().setAttribute("user", player);
-        String answer = Integer.toString(player.getAttack()) +" " + Integer.toString(player.getMana());
-        System.out.println(answer);
+        String answer = player.getAttack()+" " + player.getMana();
         return answer;
     }
     @RequestMapping(value = "/vitality", method = RequestMethod.GET)
@@ -71,11 +66,9 @@ public class Inventory {
         bylogin.getUserdetails().setVitality(bylogin.getUserdetails().getVitality() + 1);
         userDetailsDAO.update(bylogin.getUserdetails());
         Player player = getPlayer(bylogin.getUserdetails().getType(),bylogin.getLogin(), bylogin.getUserdetails());
-        player.calculateHealth();
-        player.calculateAttack();
+        player.addVitality(0);
         req.getSession().setAttribute("user", player);
-        String answer = Integer.toString(player.getAttack()) +" " + Integer.toString(player.getHealth());
-        System.out.println(answer);
+        String answer = player.getAttack() +" " + player.getHealth();
         return answer;
     }
     @RequestMapping(value = "/agility", method = RequestMethod.GET)
@@ -88,11 +81,9 @@ public class Inventory {
         bylogin.getUserdetails().setAgility(bylogin.getUserdetails().getAgility() + 1);
         userDetailsDAO.update(bylogin.getUserdetails());
         Player player = getPlayer(bylogin.getUserdetails().getType(),bylogin.getLogin(), bylogin.getUserdetails());
-        player.calculateDefense();
-        player.calculateAttack();
+        player.addAgility(0);
         req.getSession().setAttribute("user", player);
-        String answer = Integer.toString(player.getAttack()) +" " + Integer.toString(player.getDefense());
-        System.out.println(answer);
+        String answer = player.getAttack() +" " + player.getDefense();
         return answer;
     }
     private Player getPlayer(String type, String login, Userdetails userdetails) {
@@ -117,6 +108,10 @@ public class Inventory {
         if (userdetails.getExp()!=0) player.setExp(userdetails.getExp());
         player.setPoint(userdetails.getPoint());
         player.calculateItem(userdetails.getItems(),userdetails.getWearingItems());
+        player.calculateAttack();
+        player.calculateHealth();
+        player.calculateDefense();
+        player.calculateMana();
         return player;
     }
 

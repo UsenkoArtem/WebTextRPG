@@ -36,7 +36,8 @@ public class InventoryController {
         } else {
             player = null;
 
-        };
+        }
+
         map.put("Player",player);
         return "Inventory";
     }

@@ -14,7 +14,7 @@
         <%@include file="/resource/js/jquery-1.6.3.min.js"%>
     </script>
     <script type="text/javascript">
-        <%@include file="/resource/js/Strenght.js"%>
+        <%@include file="/resource/js/Stats.js"%>
     </script>
     <title> Inventory </title>
     <div class="menu-wrap">

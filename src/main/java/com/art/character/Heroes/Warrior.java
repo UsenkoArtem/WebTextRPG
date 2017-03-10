@@ -20,20 +20,7 @@ public class Warrior extends Player {
 
     }
 
-    public   void levelUp() {
-        while (getExp()>=getLevel()*100) {
-            setExp(getExp() - getLevel() * 100);
-            setLevel(getLevel() + 1);
-            setAgility(getAgility() + 2);
-            setStrength(getStrength() + 4);
-            setIntelligence(getIntelligence() + 1);
-            setVitality(getVitality() + 5);
-            calculateAttack();
-            calculateMana();
-            calculateHealth();
-            calculateDefense();
-        }
-    }
+
 
     @Override
     public String toString() {
