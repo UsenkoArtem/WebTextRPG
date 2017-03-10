@@ -53,6 +53,7 @@ public class UserController {
         player.calculateHealth();
         player.calculateMana();
         player.calculateDefense();
+        System.out.println(player);
         return player;
     }
 
