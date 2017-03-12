@@ -1,14 +1,9 @@
 package com.art.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-/**
- * Created by Artem on 10.03.2017.
- */
 @Entity
+@Table(schema = "rpg",name = "item")
 public class Item {
     private int id;
     private String name;

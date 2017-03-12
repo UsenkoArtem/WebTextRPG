@@ -3,6 +3,7 @@ package com.art.character.Heroes;
 public class Mage extends Player {
 
     public Mage(String name) {
+
         setName( name);
         setLevel(1);
         setStrength(10);

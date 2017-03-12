@@ -4,8 +4,10 @@ import com.art.character.Heroes.Mage;
 import com.art.character.Heroes.Player;
 import com.art.character.Heroes.Rogue;
 import com.art.character.Heroes.Warrior;
+import com.art.dao.ItemDAO;
 import com.art.dao.UserDAO;
 import com.art.dao.UserDetailsDAO;
+import com.art.model.Item;
 import com.art.model.User;
 import com.art.model.Userdetails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class Inventory {
     private HttpServletRequest req;
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private ItemDAO itemDAO;
+
     @Autowired
     private UserDetailsDAO userDetailsDAO;
 
@@ -106,12 +111,31 @@ public class Inventory {
         if (userdetails.getIntelligence()!=0)player.setIntelligence(userdetails.getIntelligence());
         if (userdetails.getVitality()!=0) player.setVitality(userdetails.getVitality());
         if (userdetails.getExp()!=0) player.setExp(userdetails.getExp());
+        player.setLevel(userdetails.getLevel());
         player.setPoint(userdetails.getPoint());
+        try {
+            String[] split = userdetails.getItems().split(",");
+            for (String s : split) {
+                int id = new Integer(s);
+                Item item = itemDAO.findById(id);
+                player.equip(item);
+            };
+        } catch (NullPointerException ex) {}
+        try {
+            String[] split = userdetails.getWearingItems().split(",");
+            for (String s : split) {
+                int id = new Integer(s);
+                Item item = itemDAO.findById(id);
+                player.addItem(item);
+            };
+        } catch (NullPointerException ex) {
+            System.out.println("afa");
+        }
         player.calculateItem(userdetails.getItems(),userdetails.getWearingItems());
         player.calculateAttack();
         player.calculateHealth();
-        player.calculateDefense();
         player.calculateMana();
+        player.calculateDefense();
         return player;
     }
 

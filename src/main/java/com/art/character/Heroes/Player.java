@@ -1,22 +1,17 @@
 package com.art.character.Heroes;
 
 import com.art.character.Character;
-import com.art.dao.ItemDAO;
 import com.art.model.Item;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 import java.util.List;
 
 public class Player extends Character {
 
-    @Autowired
-    ItemDAO itemDAO;
-
     private int Point;
     private int time;
     private List<Item> itemList;
-    private Item[] wearItem = new Item[3];
+    private Item[] wearItem = new Item[4];
     private int money;
     private int exp;
 
@@ -41,6 +36,10 @@ public class Player extends Character {
 
     public void deleteItem(int position) {
         itemList.remove(position);
+    }
+
+    public void equip(Item item) {
+        itemList.add(item);
     }
 
     public void regenHealth() {
@@ -137,17 +136,6 @@ public class Player extends Character {
 
     public void calculateItem(String items, String wearingItems) {
 
-        if (!(items==null|items.isEmpty())) {
-        String[] split = items.split(",");
-        for (String aSplit : split) {
-            itemList.add(itemDAO.findById(Integer.parseInt(aSplit)));
-        }}
-        if (!(wearingItems==null|wearingItems.isEmpty())) {
-            String[] split1 = wearingItems.split(",");
-            for (String aSplit1 : split1) {
-                addItem(itemDAO.findById(Integer.parseInt(aSplit1)));
-            }
-        }
     }
 
 
@@ -193,7 +181,7 @@ public class Player extends Character {
     @Override
     public String toString() {
         return "Player{" +
-                "itemDAO=" + itemDAO +
+
                 ", Point=" + Point +
                 ", time=" + time +
                 ", itemList=" + itemList +

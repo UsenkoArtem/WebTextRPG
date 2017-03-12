@@ -17,7 +17,7 @@ import java.util.List;
 public class UserDAOImp implements  UserDAO {
 
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     private Session getSession(){
         return sessionFactory.getCurrentSession();
@@ -31,6 +31,7 @@ public class UserDAOImp implements  UserDAO {
 
     @Override
     public User findById(int id) {
+
         return (User) getSession().get(User.class,id);
     }
 

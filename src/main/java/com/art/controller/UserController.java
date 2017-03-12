@@ -6,7 +6,9 @@ import com.art.character.Heroes.Rogue;
 import com.art.character.Heroes.Warrior;
 import com.art.classWrapper.Registration;
 import com.art.classWrapper.SignIn;
+import com.art.dao.ItemDAO;
 import com.art.dao.UserDAO;
+import com.art.model.Item;
 import com.art.model.User;
 import com.art.model.Userdetails;
 import com.art.validation.RegValidation;
@@ -48,17 +50,37 @@ public class UserController {
         if (userdetails.getExp()!=0) player.setExp(userdetails.getExp());
         player.setLevel(userdetails.getLevel());
         player.setPoint(userdetails.getPoint());
+         try {
+             String[] split = userdetails.getItems().split(",");
+             for (String s : split) {
+                 int id = new Integer(s);
+                 Item item = itemDAO.findById(id);
+                 player.equip(item);
+             };
+         } catch (NullPointerException ex) {}
+        try {
+            String[] split = userdetails.getWearingItems().split(",");
+            for (String s : split) {
+                int id = new Integer(s);
+                Item item = itemDAO.findById(id);
+                player.addItem(item);
+            };
+        } catch (NullPointerException ex) {
+            System.out.println("afa");
+        }
         player.calculateItem(userdetails.getItems(),userdetails.getWearingItems());
         player.calculateAttack();
         player.calculateHealth();
         player.calculateMana();
         player.calculateDefense();
-        System.out.println(player);
         return player;
     }
 
     @Autowired
     private HttpServletRequest req;
+
+    @Autowired
+    private ItemDAO itemDAO;
 
     @Autowired
     private UserDAO userDAO;

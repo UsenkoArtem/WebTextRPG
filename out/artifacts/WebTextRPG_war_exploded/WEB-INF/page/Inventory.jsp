@@ -30,52 +30,58 @@
 <br>
 <body>
 <div class="character">
-    <div id="Name" style="position: absolute; top:15.5%; left:13%;" >
+    <div id="Name" style="position: absolute; top:20.5%; left:13%;" >
         ${Player.name}
     </div>
-    <div id="Class" style="position: absolute; top:21.5%; left:13%;" >
+    <div id="Class" style="position: absolute; top:25.5%; left:13%;" >
         ${type}
     </div>
-    <div id="Attack" style="position: absolute; top:30%; left:13%;" >
+    <div id="Attack" style="position: absolute; top:33%; left:13%;" >
         ${Player.attack}
     </div>
-    <div id="Defense" style="position: absolute; top:36%; left:14%;" >
+    <div id="Defense" style="position: absolute; top:38%; left:14%;" >
         ${Player.defense}
     </div>
-    <div id="Health" style="position: absolute; top:45%; left:13%;" >
+    <div id="Health" style="position: absolute; top:47%; left:13%;" >
         ${Player.health}
     </div>
-    <div id="Mana" style="position: absolute; top:51%; left:13%;" >
+    <div id="Mana" style="position: absolute; top:52%; left:13%;" >
         ${Player.mana}
     </div>
-    <div id="Strength" style="position: absolute; top:68%; left:32%;" >
+    <div id="Strength" style="position: absolute; top:65%; left:32%;" >
         ${Player.strength}
     </div>
-    <div id="Agility" style="position: absolute; top:75.5%; left:32%;" >
+    <div id="Agility" style="position: absolute; top:72.5%; left:32%;" >
         ${Player.agility}
     </div>
-    <div id="Intelligence" style="position: absolute; top:83.5%; left:32%;" >
+    <div id="Intelligence" style="position: absolute; top:80.5%; left:32%;" >
         ${Player.intelligence}
     </div>
-    <div id="Vitality" style="position: absolute; top:92%; left:32%;" >
+    <div id="Vitality" style="position: absolute; top:89%; left:32%;" >
         ${Player.vitality}
     </div>
-    <div id="Point" style="position: absolute; top:68.5%; left:50%;" >
+    <div id="Point" style="position: absolute; top:65%; left:50%;" >
         ${Player.point}
     </div>
-    <div id="Arrow" style="position: absolute; top:68%; left:36%;" >
+    <div id="Level" style="position: absolute; top:20.5%; left:49%;" >
+        ${Player.level}
+    </div>
+<div id="Exp" style="position: absolute; top:25.5%; left:49%;" >
+    ${Player.exp}
+</div>
+    <div id="Arrow" style="position: absolute; top:65%; left:36%;" >
         <input type="button" id="arrowStrength" value="plus">
     </div>
 
-    <div id="Arrow1" style="position: absolute; top:75.5%; left:36%;" >
+    <div id="Arrow1" style="position: absolute; top:72.5%; left:36%;" >
         <input type="button" id="arrowAgility" value="plus">
     </div>
 
-    <div id="Arrow2" style="position: absolute; top:83.5%; left:36%;" >
+    <div id="Arrow2" style="position: absolute; top:80.5%; left:36%;" >
         <input type="button" id="arrowIntelligence" value="plus">
     </div>
 
-    <div id="Arrow3" style="position: absolute; top:92%; left:36%;" >
+    <div id="Arrow3" style="position: absolute; top:89%; left:36%;" >
         <input type="button" id="arrowVitality" value="plus">
     </div>
 

@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @EnableTransactionManagement
 public class UserDetailsDAOImpl implements  UserDetailsDAO {
     @Autowired
-    SessionFactory sessionFactory;
+    private  SessionFactory sessionFactory;
 
     private Session getSession(){
         return sessionFactory.getCurrentSession();
