@@ -4,8 +4,9 @@ package com.art.character.Enemies;
  * Created by Artem on 03.03.2017.
  */
 public class IntelligenceEnemy extends Enemy {
-    public IntelligenceEnemy(String cultist, int i, int i1, int i2, int i3, int i4) {
-        super(cultist,i,i1,i2,i3,i4);
+    public IntelligenceEnemy(String name, int i, int i1, int i2, int i3, int i4) {
+
+        super(name,i,i1,i2,i3,i4);
     }
 
     @Override
@@ -15,6 +16,6 @@ public class IntelligenceEnemy extends Enemy {
 
     @Override
     public void calculateAttack() {
-        setAttack(getIntelligence()*9);
+        setAttack(getIntelligence()*7);
     }
 }
