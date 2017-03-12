@@ -137,7 +137,7 @@ public class Player extends Character {
 
     public void calculateItem(String items, String wearingItems) {
 
-        if (!(items1==null|items1.isEmpty())) {
+        if (!(items==null|items.isEmpty())) {
         String[] split = items.split(",");
         for (String aSplit : split) {
             itemList.add(itemDAO.findById(Integer.parseInt(aSplit)));
