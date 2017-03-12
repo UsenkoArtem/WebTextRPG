@@ -4,6 +4,7 @@ import com.art.character.Heroes.Mage;
 import com.art.character.Heroes.Player;
 import com.art.character.Heroes.Rogue;
 import com.art.character.Heroes.Warrior;
+import com.art.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
@@ -39,6 +40,21 @@ public class InventoryController {
         }
 
         map.put("Player",player);
+        int col = 0;
+        for (Item item : player.getWearItem()){
+            if (item!=null) {
+                ++col;
+            }
+        }
+        Item[] list = new Item[col];
+        col=0;
+        for (Item item : player.getWearItem()){
+            if (item!=null) {
+              list[col] = item; ++col;
+            }
+        }
+
+        map.put("item",list);
         return "Inventory";
     }
 

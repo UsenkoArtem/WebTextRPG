@@ -15,6 +15,22 @@ public class Player extends Character {
     private int money;
     private int exp;
 
+    public List<Item> getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
+    }
+
+    public Item[] getWearItem() {
+        return wearItem;
+    }
+
+    public void setWearItem(Item[] wearItem) {
+        this.wearItem = wearItem;
+    }
+
     public void addItem(Item item) {
         wearItem[item.getPosition()]= item;
         addStrength(item.getStrength());
@@ -28,9 +44,16 @@ public class Player extends Character {
 
     }
 
-    public void unequip(int position){
-        itemList.add(wearItem[position]);
-        wearItem[position]=null;
+    public void unequip(Item item){
+        addStrength(-item.getStrength());
+        addAgility(-item.getAgility());
+        addVitality(-item.getVitality());
+        addIntelligence(-item.getIntelligence());
+        setAttack(getAttack()-item.getAttack());
+        setDefense(getDefense()-item.getDefense());
+        setHealth(getHealth()-item.getHealth());
+        setMana(getMana()-item.getMana());
+
 
     }
 

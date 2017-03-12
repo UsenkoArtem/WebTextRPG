@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -84,7 +85,23 @@
     <div id="Arrow3" style="position: absolute; top:89%; left:36%;" >
         <input type="button" id="arrowVitality" value="plus">
     </div>
+    <div id="Item" style="position: absolute; top: 20%; left: 70%;">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>Agility</td>
+                <td>Strength</td>
+            </tr>
+            <c:forEach items="${item}" var="item1">
+                <tr>
+                    <td>${item1.name}</td>
+                    <td>${item1.agility} <td>
+                    <td>${item1.strength}</td>
 
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
 
 
 
