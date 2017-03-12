@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="commons-dbcp2-2.0">
+    <CLASSES>
+      <root url="jar://E:/IdeaProjects/JavaLibrary/commons-dbcp2-2.0.jar!/" />
+      <root url="jar://E:/IdeaProjects/JavaLibrary/commons-fileupload-1.3.1.jar!/" />
+      <root url="jar://E:/IdeaProjects/JavaLibrary/controlsfx-8.0.1.jar!/" />
+      <root url="jar://E:/IdeaProjects/JavaLibrary/controlsfx-8.20.8 (1).jar!/" />
+      <root url="jar://E:/IdeaProjects/JavaLibrary/jboss-logging-3.0.0.ga.jar!/" />
+      <root url="jar://E:/IdeaProjects/JavaLibrary/mail-1.4.7.jar!/" />
+      <root url="jar://E:/IdeaProjects/JavaLibrary/mail.jar!/" />
+      <root url="jar://E:/IdeaProjects/JavaLibrary/mysql-connector-java-5.1.40-bin.jar!/" />
+      <root url="jar://E:/IdeaProjects/JavaLibrary/openjfx-dialogs-1.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://E:/IdeaProjects/JavaLibrary/mysql-connector-java-5.1.40.zip!/mysql-connector-java-5.1.40/src" />
+    </SOURCES>
+  </library>
+</component>

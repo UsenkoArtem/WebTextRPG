@@ -4,19 +4,11 @@
     <facet type="Spring" name="Spring">
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/com/art/init/EnemyConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/com/art/init/HibernateConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/com/art/init/MailConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/com/art/init/SpringMVCConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/art/init/EnemyConfig.java</file>
         </fileset>
-      </configuration>
-    </facet>
-    <facet type="hibernate" name="Hibernate">
-      <configuration>
-        <datasource-map>
-          <unit-entry name="SessionFactory" value="1581861f-efd2-4950-bb26-ab7d94553785" />
-        </datasource-map>
-        <naming-strategy-map />
       </configuration>
     </facet>
     <facet type="web" name="Web">
@@ -24,10 +16,12 @@
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/web" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/java" />
-          <root url="file://$MODULE_DIR$/src/main/resources" />
-        </sourceRoots>
+      </configuration>
+    </facet>
+    <facet type="hibernate" name="Hibernate">
+      <configuration>
+        <datasource-map />
+        <naming-strategy-map />
       </configuration>
     </facet>
   </component>
@@ -37,7 +31,6 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -49,12 +42,11 @@
     <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.1.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.1.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:4.1.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:4.1.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.1.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:4.1.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.1.9.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: commons-fileupload:commons-fileupload:1.3.1" level="project" />
-    <orderEntry type="library" name="Maven: commons-io:commons-io:2.5" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:4.3.6.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.1.3.GA" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging-annotations:1.2.0.Beta1" level="project" />
@@ -72,10 +64,6 @@
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.34" level="project" />
     <orderEntry type="library" name="Maven: javax.mail:mail:1.4.7" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
-    <orderEntry type="library" name="Maven: joda-time:joda-time:2.3" level="project" />
-    <orderEntry type="library" name="Maven: org.jadira.usertype:usertype.core:3.0.0.CR1" level="project" />
-    <orderEntry type="library" name="Maven: org.joda:joda-money:0.6" level="project" />
-    <orderEntry type="library" name="Maven: org.jadira.usertype:usertype.spi:3.0.0.CR1" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet.jsp:javax.servlet.jsp-api:2.3.1" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:jstl:1.2" level="project" />
@@ -88,7 +76,8 @@
     <orderEntry type="library" name="Maven: commons-validator:commons-validator:1.4.0" level="project" />
     <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.8.3" level="project" />
     <orderEntry type="library" name="Maven: commons-digester:commons-digester:1.8" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:4.1.9.RELEASE" level="project" />
-    <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="Maven: commons-fileupload:commons-fileupload:1.3.1" level="project" />
+    <orderEntry type="library" name="Maven: commons-io:commons-io:2.5" level="project" />
+    <orderEntry type="library" name="commons-dbcp2-2.0" level="project" />
   </component>
 </module>
