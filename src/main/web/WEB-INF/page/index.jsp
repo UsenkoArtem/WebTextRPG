@@ -80,7 +80,7 @@
             <li><b>Levels 1-10</b></li>
             <li>Glorious Forest with blooming orchards and shaded groves. What threat can you expect? </li>
             <br>
-            <li><b><a href="">Embark</a></b></li>
+            <li><b><a href="woodland.jsp">Embark</a></b></li>
 
         </ul>
     </div>
