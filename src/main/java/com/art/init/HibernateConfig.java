@@ -42,6 +42,10 @@ public class HibernateConfig {
         properties.put("hibernet.dialect","org.hibernate.dialect.MySQLDialect");
         properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
         properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
+        properties.put("hibernate.connection.autocommit","true");
+        properties.put("connection.autoReconnect=true","true");
+        properties.put("hibernate.autoReconnect","true");
+        properties.put("hibernate.connection.pool_size=","10");
         return properties;
     }
 

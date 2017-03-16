@@ -40,7 +40,7 @@ public class UserController {
             player = new Mage(login);
 
         } else {
-            player = null;
+            player = null;;;
 
         }
         if (userdetails.getAgility()!=0)   player.setAgility(userdetails.getAgility());
@@ -50,24 +50,26 @@ public class UserController {
         if (userdetails.getExp()!=0) player.setExp(userdetails.getExp());
         player.setLevel(userdetails.getLevel());
         player.setPoint(userdetails.getPoint());
-         try {
-             String[] split = userdetails.getItems().split(",");
-             for (String s : split) {
-                 int id = new Integer(s);
-                 Item item = itemDAO.findById(id);
-                 player.equip(item);
-             };
-         } catch (NullPointerException ex) {}
         try {
             String[] split = userdetails.getWearingItems().split(",");
             for (String s : split) {
                 int id = new Integer(s);
                 Item item = itemDAO.findById(id);
                 player.addItem(item);
+
             };
-        } catch (NullPointerException ex) {
-            System.out.println("afa");
+        } catch (Exception ex) {
+
         }
+         try {
+             String[] split = userdetails.getItems().split(",");
+             for (String s : split) {
+                 int id = new Integer(s);
+                 Item item = itemDAO.findById(id);
+                 player.equip(item);;;
+             };
+         } catch (NullPointerException ex) {}
+
         player.calculateItem(userdetails.getItems(),userdetails.getWearingItems());
         player.calculateAttack();
         player.calculateHealth();
@@ -161,5 +163,8 @@ public class UserController {
         req.getSession().removeAttribute("type");
         return  "redirect: /";
     }
-
+   @RequestMapping(value = "/woodland",method = RequestMethod.GET)
+    public  String woodland () {
+        return "woodland";
+   }
 }

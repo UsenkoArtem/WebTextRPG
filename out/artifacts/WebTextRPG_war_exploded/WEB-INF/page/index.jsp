@@ -29,7 +29,7 @@
     </nav>
 </div>
 <div id="wrapper">
-    <img width="1350" height="600" src="../../resource/image/FantasyMap(scroll).png" alt="World Map">
+    <img width="1450" height="700" src="../../resource/image/FantasyMap(scroll).png" alt="World Map">
     <div class="pin pin-down" data-xpos="1050" data-ypos="330">
         <h2>Barrens</h2>
         <ul>
@@ -41,7 +41,7 @@
         </ul>
     </div>
 
-    <div class="pin" data-xpos="490" data-ypos="330">
+    <div class="pin" data-xpos="490" data-ypos="400">
         <h2>Harbor</h2>
         <ul>
             <li><b>Store & Upgrades</b></li>
@@ -52,7 +52,7 @@
         </ul>
     </div>
 
-    <div class="pin pin-down" data-xpos="400" data-ypos="130">
+    <div class="pin pin-down" data-xpos="400" data-ypos="150">
         <h2>Frozen Hills</h2>
         <ul>
             <li><b>Levels 30-40</b></li>
@@ -63,7 +63,7 @@
         </ul>
     </div>
 
-    <div class="pin pin-down" data-xpos="800" data-ypos="150">
+    <div class="pin pin-down" data-xpos="800" data-ypos="170">
         <h2>Boneyard</h2>
         <ul>
             <li><b>Levels 20-30</b></li>
@@ -74,13 +74,13 @@
         </ul>
     </div>
 
-    <div class="pin pin-down" data-xpos="750" data-ypos="350">
+    <div class="pin pin-down" data-xpos="750" data-ypos="400">
         <h2>WoodLand</h2>
         <ul>
             <li><b>Levels 1-10</b></li>
             <li>Glorious Forest with blooming orchards and shaded groves. What threat can you expect? </li>
             <br>
-            <li><b><a href="">Embark</a></b></li>
+            <li><b><a href="/woodland">Embark</a></b></li>
 
         </ul>
     </div>

@@ -6,6 +6,7 @@
         <element id="directory" name="classes">
           <element id="module-output" name="WebTextRPG" />
           <element id="library" level="application" name="jquery" />
+          <element id="jpa-descriptors" facet="WebTextRPG/jpa/JPA" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-core:4.1.9.RELEASE" />

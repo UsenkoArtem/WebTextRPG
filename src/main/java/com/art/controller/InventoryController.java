@@ -40,21 +40,45 @@ public class InventoryController {
         }
 
         map.put("Player",player);
+        Item[] list;
+        Item[] items;
         int col = 0;
-        for (Item item : player.getWearItem()){
-            if (item!=null) {
-                ++col;
+        try {
+            for (Item item : player.getWearItem()) {
+                if (item != null) {
+                    ++col;
+                }
             }
+             list = new Item[col];
+            col = 0;
+            for (Item item : player.getWearItem()) {
+                if (item != null) {
+                    list[col] = item;
+                    ++col;
+                }
+            }
+        } catch ( NullPointerException ex) {
+            list = new Item[0];
         }
-        Item[] list = new Item[col];
         col=0;
-        for (Item item : player.getWearItem()){
-            if (item!=null) {
-              list[col] = item; ++col;
+        try {
+            for (Item item : player.getItemList()) {
+                if (item != null) ++col;
+            }
+             items = new Item[col];
+            col=0;
+            for (Item item : player.getItemList()) {
+                if (item != null) {
+                    items[col] = item;
+                    ++col;
+                }
             }
         }
-
+        catch (NullPointerException ex) {
+            items = new Item[0];
+        }
         map.put("item",list);
+        map.put("items",items);
         return "Inventory";
     }
 

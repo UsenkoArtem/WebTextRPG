@@ -3,6 +3,7 @@ package com.art.character.Heroes;
 import com.art.character.Character;
 import com.art.model.Item;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,7 +11,7 @@ public class Player extends Character {
 
     private int Point;
     private int time;
-    private List<Item> itemList;
+    private List<Item> itemList = new ArrayList<>();
     private Item[] wearItem = new Item[4];
     private int money;
     private int exp;
@@ -33,6 +34,7 @@ public class Player extends Character {
 
     public void addItem(Item item) {
         wearItem[item.getPosition()]= item;
+        getItemList().remove(item);
         addStrength(item.getStrength());
         addAgility(item.getAgility());
         addVitality(item.getVitality());
@@ -45,20 +47,22 @@ public class Player extends Character {
     }
 
     public void unequip(Item item){
+        wearItem[item.getPosition()]= null;
+        equip(item);
         addStrength(-item.getStrength());
         addAgility(-item.getAgility());
         addVitality(-item.getVitality());
         addIntelligence(-item.getIntelligence());
-        setAttack(getAttack()-item.getAttack());
-        setDefense(getDefense()-item.getDefense());
-        setHealth(getHealth()-item.getHealth());
-        setMana(getMana()-item.getMana());
+      //  setAttack(getAttack()-item.getAttack());
+       // setDefense(getDefense()-item.getDefense());
+       // setHealth(getHealth()-item.getHealth());
+       // setMana(getMana()-item.getMana());
 
 
     }
 
-    public void deleteItem(int position) {
-        itemList.remove(position);
+    public void deleteItem(Item item) {
+        itemList.remove(item);
     }
 
     public void equip(Item item) {
@@ -120,7 +124,9 @@ public class Player extends Character {
     }
 
     public void calculateDefense() {
-        int defense = getAgility() / 7;
+        int defense = getAgility();
+
+        defense/=7;
         for ( Item item :wearItem) {
             if (item!=null)  defense += item.getDefense();
         }
@@ -212,5 +218,14 @@ public class Player extends Character {
                 ", money=" + money +
                 ", exp=" + exp +
                 '}';
+    }
+
+    public String statsString() {
+        return ""+getAgility()+ " "  + getVitality() + " " +  getIntelligence() +" " + getStrength()
+             +" " + getAttack() +" " + getDefense() +" " +  getHealth() +" " + getMana() +" "+ getPoint() +" " + getLevel() +" "+ getExp();
+
+
+
+
     }
 }
