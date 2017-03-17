@@ -108,8 +108,8 @@
                 request.getSession().setAttribute("i", i);
             %>
             <c:forEach items="${item}" var="item1">
-                <tr id="e${item1.id}" style="color: rgba(17,2,5,0.96)">
-                    <td hidden><% out.print(i); %></td>
+                <tr  style="color: rgba(17,2,5,0.96)">
+                    <td hidden><% out.print(i + " equip" + " "  );%>  </td>
                     <td align="center" height="10" width="50">${item1.name}</td>
                     <td align="center" height="10" width="50">${item1.agility}</td>
                     <td align="center" height="10" width="50">${item1.strength}</td>
@@ -125,7 +125,7 @@
             </c:forEach>
 
             <c:forEach items="${items}" var="item1">
-                <tr id="i${item1.id}" style="color: rgba(17,2,5,0.96)">
+                <tr  style="color: rgba(17,2,5,0.96)">
                     <td hidden><% out.print(i); %></td>
                     <td align="center" height="10" width="50">${item1.name}</td>
                     <td align="center" height="10" width="50">${item1.agility}</td>

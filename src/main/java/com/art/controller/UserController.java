@@ -1,14 +1,11 @@
 package com.art.controller;
 
-import com.art.character.Heroes.Mage;
 import com.art.character.Heroes.Player;
-import com.art.character.Heroes.Rogue;
-import com.art.character.Heroes.Warrior;
 import com.art.classWrapper.Registration;
 import com.art.classWrapper.SignIn;
 import com.art.dao.ItemDAO;
+import com.art.dao.PlayerDAO;
 import com.art.dao.UserDAO;
-import com.art.model.Item;
 import com.art.model.User;
 import com.art.model.Userdetails;
 import com.art.validation.RegValidation;
@@ -28,55 +25,9 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class UserController {
 
-    private Player getPlayer(String type, String login, Userdetails userdetails) {
-        Player player;
-        if (type.equals("Warrior")) {
-            player = new Warrior(login);
 
-        } else if (type.equals("Rogue")) {
-            player = new Rogue(login);
-
-        } else if (type.equals("Mage")) {
-            player = new Mage(login);
-
-        } else {
-            player = null;;;
-
-        }
-        if (userdetails.getAgility()!=0)   player.setAgility(userdetails.getAgility());
-        if (userdetails.getStrenght()!=0)   player.setStrength(userdetails.getStrenght());
-        if (userdetails.getIntelligence()!=0)player.setIntelligence(userdetails.getIntelligence());
-        if (userdetails.getVitality()!=0) player.setVitality(userdetails.getVitality());
-        if (userdetails.getExp()!=0) player.setExp(userdetails.getExp());
-        player.setLevel(userdetails.getLevel());
-        player.setPoint(userdetails.getPoint());
-        try {
-            String[] split = userdetails.getWearingItems().split(",");
-            for (String s : split) {
-                int id = new Integer(s);
-                Item item = itemDAO.findById(id);
-                player.addItem(item);
-
-            };
-        } catch (Exception ex) {
-
-        }
-         try {
-             String[] split = userdetails.getItems().split(",");
-             for (String s : split) {
-                 int id = new Integer(s);
-                 Item item = itemDAO.findById(id);
-                 player.equip(item);;;
-             };
-         } catch (NullPointerException ex) {}
-
-        player.calculateItem(userdetails.getItems(),userdetails.getWearingItems());
-        player.calculateAttack();
-        player.calculateHealth();
-        player.calculateMana();
-        player.calculateDefense();
-        return player;
-    }
+    @Autowired
+    private  PlayerDAO playerDAO;
 
     @Autowired
     private HttpServletRequest req;
@@ -108,7 +59,7 @@ public class UserController {
             return "SignIn";
         }
         User user = userDAO.findBylogin(signIn.getLogin());
-        Player player = getPlayer(user.getUserdetails().getType(),user.getLogin(), user.getUserdetails());
+        Player player = playerDAO.getPlayer(user.getUserdetails().getType(),user.getLogin(), user.getUserdetails());
         req.getSession().setAttribute("name", player.getName());
         req.getSession().setAttribute("type", player.getClass().getSimpleName());
         req.getSession().setAttribute("user", player);
@@ -137,7 +88,7 @@ public class UserController {
         userdetails.setStrenght(0);
         if (registration.getClassName().isEmpty()) registration.setClassName("Warrior");
         userdetails.setType(registration.getClassName());
-        Player player = getPlayer(userdetails.getType(),user.getLogin(),userdetails);
+        Player player = playerDAO.getPlayer(userdetails.getType(),user.getLogin(),userdetails);
         userdetails.setAgility(player.getAgility());
         userdetails.setStrenght(player.getStrength());
         userdetails.setIntelligence(player.getIntelligence());
