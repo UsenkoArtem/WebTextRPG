@@ -1,6 +1,6 @@
 package com.art.character.Enemies.Barrens;
 
-import com.art.character.Enemies.Enemy;
+
 import com.art.character.Enemies.IntelligenceEnemy;
 
 public class Cultist extends IntelligenceEnemy {
@@ -15,7 +15,7 @@ public class Cultist extends IntelligenceEnemy {
         int level = getLevel();
         setAgility(getAgility() + level * 2);
         setStrength(getStrength() + level * 1);
-        setIntelligence( (getIntelligence() + level * 4));
+        setIntelligence((getIntelligence() + level * 4));
         setVitality((int) (getVitality() + level * 0.8));
         calculateAttack();
         calculateDefense();

@@ -4,9 +4,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
-/**
- * Created by Artem on 05.03.2017.
- */
 @Entity
 public class User {
     private int id;

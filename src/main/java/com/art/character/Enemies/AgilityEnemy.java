@@ -1,8 +1,5 @@
 package com.art.character.Enemies;
 
-/**
- * Created by Artem on 03.03.2017.
- */
 public class AgilityEnemy  extends  Enemy{
 
     public AgilityEnemy(String name, int i, int i1, int i2, int i3, int i4) {

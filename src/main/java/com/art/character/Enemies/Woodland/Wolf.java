@@ -1,11 +1,8 @@
 package com.art.character.Enemies.Woodland;
 
 import com.art.character.Enemies.AgilityEnemy;
-import com.art.character.Enemies.Enemy;
 
-/**
- * Created by Artem on 28.02.2017.
- */
+
 public class Wolf extends AgilityEnemy {
 
         public Wolf(String wolf, int i, int i1, int i2, int i3, int i4)

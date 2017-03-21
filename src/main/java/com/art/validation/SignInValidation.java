@@ -12,7 +12,7 @@ import org.springframework.validation.Validator;
 public class SignInValidation implements Validator {
 
     @Autowired
-    UserDAO userDAO;
+    private UserDAO userDAO;
 
     @Override
     public boolean supports(Class<?> clazz) {

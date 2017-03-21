@@ -21,9 +21,14 @@ public class ItemDAOImp implements  ItemDAO {
 
     @Override
     public Item findById(int id) {
-
-        return (Item) getSession().get(Item.class,id);
+            try {
+                return (Item) getSession().get(Item.class, id);
+            } catch (NullPointerException ex ) {
+                System.out.println(("Такого предмета нету"));
+                return null;
+            }
     }
+
 
 
 }

@@ -26,4 +26,6 @@ public interface PlayerDAO {
     Player unequipe(Player player, User user, int id);
 
     Player deleteEquipeItem(Player player, User user, int id);
+
+    Player equip(Player player, User user, int id);
 }

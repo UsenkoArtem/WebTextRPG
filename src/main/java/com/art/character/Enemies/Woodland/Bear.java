@@ -1,11 +1,7 @@
 package com.art.character.Enemies.Woodland;
 
-import com.art.character.Enemies.Enemy;
 import com.art.character.Enemies.StrengthEnemy;
 
-/**
- * Created by Artem on 28.02.2017.
- */
 public class Bear extends StrengthEnemy {
     public Bear(String bear, int i, int i1, int i2, int i3, int i4) {
 

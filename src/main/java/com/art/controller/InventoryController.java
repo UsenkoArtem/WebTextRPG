@@ -24,7 +24,8 @@ public class InventoryController {
 
     @RequestMapping(value = "/inventory", method = RequestMethod.GET)
     public String inventory(ModelMap map) {
-
+        String name  = (String) req.getSession().getAttribute("name");
+        if (name == null ) return "redirect:/";
         String type = (String) req.getSession().getAttribute("type");
         Player player;
         if (type.equals("Warrior")) {

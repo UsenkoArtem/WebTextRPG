@@ -38,7 +38,6 @@ public class Character extends Stats {
 
     public void calculateMana() {
         int mana = 0;
-        ///Формула для маны
         setMana(mana);
     }
 

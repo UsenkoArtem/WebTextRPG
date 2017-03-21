@@ -29,6 +29,7 @@ public class ItemsController {
     @ResponseBody
     public String delete(@PathVariable int id) {
         String name = (String) req.getSession().getAttribute("name");
+        if (name == null ) return "redirect:/";
         User bylogin = userDAO.findBylogin(name);
         Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
         playerDAO.deleteItem(player, bylogin, id);
@@ -40,21 +41,37 @@ public class ItemsController {
     @ResponseBody
     public String unequipe(@PathVariable int id) {
         String name = (String) req.getSession().getAttribute("name");
+        if (name == null ) return "redirect:/";
         User bylogin = userDAO.findBylogin(name);
         Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
-        Player player1 = playerDAO.unequipe(player, bylogin, id);
+         player = playerDAO.unequipe(player, bylogin, id);
         req.getSession().setAttribute("user", player);
         return player.statsString();
     }
 
-    @RequestMapping(value = "/deleteEquipeItem/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/deleteEquipItem/{id}", method = RequestMethod.GET)
     @ResponseBody
     public String deleteEquipeItem(@PathVariable int id) {
         String name = (String) req.getSession().getAttribute("name");
+        if (name == null ) return "redirect:/";
         User bylogin = userDAO.findBylogin(name);
         Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
         player = playerDAO.deleteEquipeItem(player, bylogin, id);
         req.getSession().setAttribute("user", player);
         return player.statsString();
     }
+
+    @RequestMapping(value = "/equipItem/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public String equipItem(@PathVariable int id) {
+        String name  = (String) req.getSession().getAttribute("name");
+        if (name == null ) return "redirect:/";
+        User bylogin = userDAO.findBylogin(name);
+        Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(),bylogin.getLogin(),bylogin.getUserdetails());
+        player = playerDAO.equip(player,bylogin,id);
+        req.getSession().setAttribute("user",player);
+        return  player.statsString();
+
+    }
+
 }

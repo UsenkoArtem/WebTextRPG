@@ -109,15 +109,15 @@
             %>
             <c:forEach items="${item}" var="item1">
                 <tr  style="color: rgba(17,2,5,0.96)">
-                    <td hidden><% out.print(i + " equip" + " "  );%>  </td>
+                    <td hidden><% out.print(i + " equip" + " ");%>${item1.position}</td>
                     <td align="center" height="10" width="50">${item1.name}</td>
                     <td align="center" height="10" width="50">${item1.agility}</td>
                     <td align="center" height="10" width="50">${item1.strength}</td>
                     <td align="center" height="10" width="50">${item1.vitality}</td>
                     <td align="center" height="10" width="50">${item1.intelligence}</td>
                     <td align="center" height="10" width="50">${item1.price}</td>
-                    <td><input type="button" value="Снять" onClick="uneqipe(${item1.id},'${i}')">
-                    <td><input type="button" value="Выкинуть" onclick="deleteEquipeItem(${item1.id},'${i}')"></td>
+                    <td><input type="button" value="Abort" onclick="deleteEquipeItem(${item1.id},'${i}','${item1.position}')"></td>
+                    <td><input type="button" value="Unequip" onClick="uneqipe(${item1.id},'${i}','${item1.position}')">
                     <% ++i;
                         request.getSession().setAttribute("i", i);%>
 
@@ -126,15 +126,15 @@
 
             <c:forEach items="${items}" var="item1">
                 <tr  style="color: rgba(17,2,5,0.96)">
-                    <td hidden><% out.print(i); %></td>
+                    <td hidden><% out.print(i + " unequip" + " ");%>${item1.position}</td>
                     <td align="center" height="10" width="50">${item1.name}</td>
                     <td align="center" height="10" width="50">${item1.agility}</td>
                     <td align="center" height="10" width="50">${item1.strength}</td>
                     <td align="center" height="10" width="50">${item1.vitality}</td>
                     <td align="center" height="10" width="50">${item1.intelligence}</td>
                     <td align="center" height="10" width="50">${item1.price}</td>
-                    <td><input type="button" value="Выкинуть" onClick="deletee(${item1.id},'${i}')"> </td>
-                    <td><input type="button" value="Одеть" onClick="equip(${item1.id},'${i}')"> </td>
+                    <td><input type="button" value="Abort" onClick="deletee(${item1.id},'${i}','${item1.position}')"> </td>
+                    <td><input type="button" value="Equip" onClick="equip(${item1.id},'${i}','${item1.position}')"> </td>
 
                     <% ++i;
                         request.getSession().setAttribute("i", i);%>

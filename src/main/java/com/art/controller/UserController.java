@@ -3,7 +3,6 @@ package com.art.controller;
 import com.art.character.Heroes.Player;
 import com.art.classWrapper.Registration;
 import com.art.classWrapper.SignIn;
-import com.art.dao.ItemDAO;
 import com.art.dao.PlayerDAO;
 import com.art.dao.UserDAO;
 import com.art.model.User;
@@ -31,9 +30,6 @@ public class UserController {
 
     @Autowired
     private HttpServletRequest req;
-
-    @Autowired
-    private ItemDAO itemDAO;
 
     @Autowired
     private UserDAO userDAO;
@@ -94,7 +90,6 @@ public class UserController {
         userdetails.setIntelligence(player.getIntelligence());
         userdetails.setVitality(player.getVitality());
         user.setUserdetails(userdetails);
-       // userdetails.setUserById(user);
         userDAO.addUser(user);
         req.getSession().setAttribute("name",user.getLogin());
         req.getSession().setAttribute("user", player);
@@ -104,6 +99,8 @@ public class UserController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String start(ModelMap map) {
+        String name  = (String) req.getSession().getAttribute("name");
+        if (name == null ) return "redirect:/";
         return "index";
     }
 
@@ -116,6 +113,8 @@ public class UserController {
     }
    @RequestMapping(value = "/woodland",method = RequestMethod.GET)
     public  String woodland () {
-        return "woodland";
+       String name  = (String) req.getSession().getAttribute("name");
+       if (name == null ) return "redirect:/";
+       return "woodland";
    }
 }

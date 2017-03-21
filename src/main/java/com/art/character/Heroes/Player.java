@@ -33,32 +33,21 @@ public class Player extends Character {
     }
 
     public void addItem(Item item) {
-        wearItem[item.getPosition()]= item;
+        wearItem[item.getPosition()] = item;
         getItemList().remove(item);
         addStrength(item.getStrength());
         addAgility(item.getAgility());
         addVitality(item.getVitality());
         addIntelligence(item.getIntelligence());
-        setAttack(getAttack()+item.getAttack());
-        setDefense(getDefense()+item.getDefense());
-        setHealth(getHealth()+item.getHealth());
-        setMana(getMana()+item.getMana());
-
     }
 
-    public void unequip(Item item){
-        wearItem[item.getPosition()]= null;
+    public void unequip(Item item) {
+        wearItem[item.getPosition()] = null;
         equip(item);
         addStrength(-item.getStrength());
         addAgility(-item.getAgility());
         addVitality(-item.getVitality());
         addIntelligence(-item.getIntelligence());
-      //  setAttack(getAttack()-item.getAttack());
-       // setDefense(getDefense()-item.getDefense());
-       // setHealth(getHealth()-item.getHealth());
-       // setMana(getMana()-item.getMana());
-
-
     }
 
     public void deleteItem(Item item) {
@@ -101,24 +90,24 @@ public class Player extends Character {
 
     public void calculateMana() {
         int mana = getIntelligence() * 15;
-        for ( Item item :wearItem) {
-            if (item!=null)  mana += item.getMana();
+        for (Item item : wearItem) {
+            if (item != null) mana += item.getMana();
         }
         setMana(mana);
     }
 
     public void calculateHealth() {
         int health = getVitality() * 14;
-        for ( Item item :wearItem) {
-            if (item!=null)   health += item.getHealth();
+        for (Item item : wearItem) {
+            if (item != null) health += item.getHealth();
         }
         setHealth(health);
     }
 
     public void calculateAttack() {
         int attack = getStrength() * 5 + getAgility();
-        for ( Item item :wearItem) {
-          if (item!=null)  attack+= item.getAttack();
+        for (Item item : wearItem) {
+            if (item != null) attack += item.getAttack();
         }
         setAttack(attack);
     }
@@ -126,9 +115,9 @@ public class Player extends Character {
     public void calculateDefense() {
         int defense = getAgility();
 
-        defense/=7;
-        for ( Item item :wearItem) {
-            if (item!=null)  defense += item.getDefense();
+        defense /= 7;
+        for (Item item : wearItem) {
+            if (item != null) defense += item.getDefense();
         }
         setDefense(defense);
     }
@@ -221,11 +210,7 @@ public class Player extends Character {
     }
 
     public String statsString() {
-        return ""+getAgility()+ " "  + getVitality() + " " +  getIntelligence() +" " + getStrength()
-             +" " + getAttack() +" " + getDefense() +" " +  getHealth() +" " + getMana() +" "+ getPoint() +" " + getLevel() +" "+ getExp();
-
-
-
-
+        return "" + getAgility() + " " + getVitality() + " " + getIntelligence() + " " + getStrength()
+                + " " + getAttack() + " " + getDefense() + " " + getHealth() + " " + getMana() + " " + getPoint() + " " + getLevel() + " " + getExp();
     }
 }

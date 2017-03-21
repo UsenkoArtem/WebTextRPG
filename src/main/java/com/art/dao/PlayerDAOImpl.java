@@ -9,21 +9,17 @@ import com.art.model.User;
 import com.art.model.Userdetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository("PlayerDao")
-@Transactional
-@EnableTransactionManagement
 public class PlayerDAOImpl implements PlayerDAO {
     @Autowired
-    UserDetailsDAO userDetailsDAO;
+    private  UserDetailsDAO userDetailsDAO;
 
     @Autowired
-    ItemDAO itemDAO;
+    private  ItemDAO itemDAO;
 
     @Override
     public Player getPlayer(String type, String login, Userdetails userdetails) {
@@ -143,9 +139,12 @@ public class PlayerDAOImpl implements PlayerDAO {
     public String setItem(User user, int id) {
         String items = user.getUserdetails().getItems();
         try {
-            items = items + "," + Integer.toString(id);
+            if (items!=null) {
+            items = items + "," + Integer.toString(id); }
+            else {
+                items = Integer.toString(id);
+            }
         } catch (NullPointerException ex) {
-            items = new String();
             items = Integer.toString(id);
         }
         return items;
@@ -163,6 +162,7 @@ public class PlayerDAOImpl implements PlayerDAO {
     @Override
     public Player unequipe(Player player, User user, int id) {
         Item item1 = itemDAO.findById(id);
+        if (item1==null) return player;
         player.unequip(item1);
         String s = getWearitem(player);
         user.getUserdetails().setWearingItems(s);
@@ -175,12 +175,30 @@ public class PlayerDAOImpl implements PlayerDAO {
 
     @Override
     public Player deleteEquipeItem(Player player, User user, int id) {
-        Item item1 = itemDAO.findById(id);
-        player.unequip(item1);
+        Item item = itemDAO.findById(id);
+        if (item==null) return player;
+        player.unequip(item);
         String s = getWearitem(player);
         user.getUserdetails().setWearingItems(s);
-        player.deleteItem(item1);
+        player.deleteItem(item);
         s = getItemList(player);
+        userDetailsDAO.update(user.getUserdetails());
+        return  player;
+    }
+
+    @Override
+    public Player equip(Player player, User user, int id) {
+        Item item = itemDAO.findById(id);
+        if (item==null) return player;
+        Item[] wearItem = player.getWearItem();
+        if (wearItem[item.getPosition()]!=null) {
+         player = unequipe(player,user,wearItem[item.getPosition()].getId());
+        }
+        player.addItem(item);
+        String s = getWearitem(player);
+        user.getUserdetails().setWearingItems(s);
+         s = getItemList(player);
+        user.getUserdetails().setItems(s);
         userDetailsDAO.update(user.getUserdetails());
         return  player;
     }

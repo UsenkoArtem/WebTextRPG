@@ -11,7 +11,7 @@ import org.springframework.validation.Validator;
 @Component
 public class RegValidation implements Validator {
     @Autowired
-    UserDAO userDAO;
+    private UserDAO userDAO;
 
     @Override
     public boolean supports(Class<?> clazz) {

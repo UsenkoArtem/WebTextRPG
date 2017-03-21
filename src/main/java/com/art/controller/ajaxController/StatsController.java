@@ -2,7 +2,6 @@ package com.art.controller.ajaxController;
 
 
 import com.art.character.Heroes.Player;
-import com.art.dao.ItemDAO;
 import com.art.dao.PlayerDAO;
 import com.art.dao.UserDAO;
 import com.art.dao.UserDetailsDAO;
@@ -25,8 +24,6 @@ public class StatsController {
     private HttpServletRequest req;
     @Autowired
     private UserDAO userDAO;
-    @Autowired
-    private ItemDAO itemDAO;
 
     @Autowired
     private UserDetailsDAO userDetailsDAO;
@@ -36,60 +33,59 @@ public class StatsController {
     public String strenght() {
         String name = (String) req.getSession().getAttribute("name");
         User bylogin = userDAO.findBylogin(name);
-        if (bylogin.getUserdetails().getPoint()<1) return "";
+        if (bylogin.getUserdetails().getPoint() < 1) return "";
         bylogin.getUserdetails().setPoint(bylogin.getUserdetails().getPoint() - 1);
         bylogin.getUserdetails().setStrenght(bylogin.getUserdetails().getStrenght() + 1);
         userDetailsDAO.update(bylogin.getUserdetails());
-        Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(),bylogin.getLogin(), bylogin.getUserdetails());
+        Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
         player.addStrength(0);
         req.getSession().setAttribute("user", player);
-        String answer = player.getAttack() +" " + player.getHealth();
-        return answer;
+        return player.getAttack() + " " + player.getHealth();
     }
+
     @RequestMapping(value = "/intelligence", method = RequestMethod.GET)
     @ResponseBody
     public String intelligence() {
         String name = (String) req.getSession().getAttribute("name");
         User bylogin = userDAO.findBylogin(name);
-        if (bylogin.getUserdetails().getPoint()<1) return "";
+        if (bylogin.getUserdetails().getPoint() < 1) return "";
         bylogin.getUserdetails().setPoint(bylogin.getUserdetails().getPoint() - 1);
-        bylogin.getUserdetails().setIntelligence(bylogin.getUserdetails().getIntelligence()+1);
+        bylogin.getUserdetails().setIntelligence(bylogin.getUserdetails().getIntelligence() + 1);
         userDetailsDAO.update(bylogin.getUserdetails());
-        Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(),bylogin.getLogin(), bylogin.getUserdetails());
+        Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
         player.addIntelligence(0);
         req.getSession().setAttribute("user", player);
-        String answer = player.getAttack()+" " + player.getMana();
-        return answer;
+        return player.getAttack() + " " + player.getMana();
     }
+
     @RequestMapping(value = "/vitality", method = RequestMethod.GET)
     @ResponseBody
     public String vitality() {
         String name = (String) req.getSession().getAttribute("name");
         User bylogin = userDAO.findBylogin(name);
-        if (bylogin.getUserdetails().getPoint()<1) return "";
+        if (bylogin.getUserdetails().getPoint() < 1) return "";
         bylogin.getUserdetails().setPoint(bylogin.getUserdetails().getPoint() - 1);
         bylogin.getUserdetails().setVitality(bylogin.getUserdetails().getVitality() + 1);
         userDetailsDAO.update(bylogin.getUserdetails());
-        Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(),bylogin.getLogin(), bylogin.getUserdetails());
+        Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
         player.addVitality(0);
         req.getSession().setAttribute("user", player);
-        String answer = player.getAttack() +" " + player.getHealth();
-        return answer;
+        return player.getAttack() + " " + player.getHealth();
     }
+
     @RequestMapping(value = "/agility", method = RequestMethod.GET)
     @ResponseBody
     public String agility() {
         String name = (String) req.getSession().getAttribute("name");
         User bylogin = userDAO.findBylogin(name);
-        if (bylogin.getUserdetails().getPoint()<1) return "";
+        if (bylogin.getUserdetails().getPoint() < 1) return "";
         bylogin.getUserdetails().setPoint(bylogin.getUserdetails().getPoint() - 1);
         bylogin.getUserdetails().setAgility(bylogin.getUserdetails().getAgility() + 1);
         userDetailsDAO.update(bylogin.getUserdetails());
-        Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(),bylogin.getLogin(), bylogin.getUserdetails());
+        Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
         player.addAgility(0);
         req.getSession().setAttribute("user", player);
-        String answer = player.getAttack() +" " + player.getDefense();
-        return answer;
+        return player.getAttack() + " " + player.getDefense();
     }
 
 }

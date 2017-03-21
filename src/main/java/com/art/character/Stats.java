@@ -20,20 +20,6 @@ public class Stats {
         this.vitality = vitality;
     }
 
-    @Override
-    public String toString() {
-        return "Stats{" +
-                "strength=" + strength +
-                ", agility=" + agility +
-                ", intelligence=" + intelligence +
-                ", vitality=" + vitality +
-                ", attack=" + attack +
-                ", health=" + health +
-                ", mana=" + mana +
-                ", defense=" + defense +
-                '}';
-    }
-
     public int getStrength() {
         return strength;
     }
@@ -97,4 +83,19 @@ public class Stats {
     public void setDefense(int defense) {
         this.defense = defense;
     }
+
+    @Override
+    public String toString() {
+        return "Stats{" +
+                "strength=" + strength +
+                ", agility=" + agility +
+                ", intelligence=" + intelligence +
+                ", vitality=" + vitality +
+                ", attack=" + attack +
+                ", health=" + health +
+                ", mana=" + mana +
+                ", defense=" + defense +
+                '}';
+    }
+
 }
