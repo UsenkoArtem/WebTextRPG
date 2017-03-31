@@ -4,8 +4,8 @@ import com.art.character.Enemies.IntelligenceEnemy;
 
 public class KillerSnowMan extends IntelligenceEnemy {
 
-    public KillerSnowMan(String snowMan, int i, int i1, int i2, int i3, int i4) {
-        super(snowMan, i, i1, i2, i3, i4);
+    public KillerSnowMan(String killerSnowMan, int level, int strength, int agility, int intelligence, int vitality) {
+        super(killerSnowMan, level, strength, agility, intelligence, vitality);
     }
 
     @Override

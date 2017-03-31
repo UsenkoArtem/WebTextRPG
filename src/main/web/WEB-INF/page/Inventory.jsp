@@ -19,9 +19,7 @@
     <script type="text/javascript">
         <%@include file="/resource/js/Stats.js"%>
     </script>
-    <script type="text/javascript">
-        <%@include file="/resource/js/Item.js"%>
-    </script>
+
     <script type="text/javascript">
         <%@include file="/resource/js/it.js"%>
     </script>

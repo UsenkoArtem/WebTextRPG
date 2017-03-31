@@ -6,9 +6,9 @@ import com.art.character.Enemies.IntelligenceEnemy;
 
 public class Mummy extends IntelligenceEnemy {
 
-    public Mummy(String mummy, int i, int i1, int i2, int i3, int i4) {
+    public Mummy(String mummy, int level, int strength, int agility, int intelligence, int vitality) {
+        super(mummy, level, strength, agility, intelligence, vitality);
 
-        super(mummy, i, i1, i2, i3, i4);
     }
 
     @Override

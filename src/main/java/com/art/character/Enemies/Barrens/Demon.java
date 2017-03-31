@@ -5,9 +5,9 @@ import com.art.character.Enemies.StrengthEnemy;
 
 public class Demon extends StrengthEnemy {
 
-    public Demon(String demon, int i, int i1, int i2, int i3, int i4) {
+    public Demon(String demon, int level, int strength, int agility, int intelligence, int vitality) {
+        super(demon, level, strength, agility, intelligence, vitality);
 
-        super(demon, i, i1, i2, i3, i4);
     }
 
     @Override

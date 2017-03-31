@@ -5,9 +5,8 @@ import com.art.character.Enemies.IntelligenceEnemy;
 
 public class Cultist extends IntelligenceEnemy {
 
-
-    public Cultist(String cultist, int i, int i1, int i2, int i3, int i4) {
-        super(cultist, i, i1, i2, i3, i4);
+    public Cultist(String cultist, int level, int strength, int agility, int intelligence, int vitality) {
+        super(cultist, level, strength, agility, intelligence, vitality);
     }
 
     @Override

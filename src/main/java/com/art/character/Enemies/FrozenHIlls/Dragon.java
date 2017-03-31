@@ -4,9 +4,8 @@ import com.art.character.Enemies.StrengthEnemy;
 
 public class Dragon extends StrengthEnemy {
 
-    public Dragon(String dragon, int i, int i1, int i2, int i3, int i4) {
-
-        super(dragon, i, i1, i2, i3, i4);
+    public Dragon(String dragon, int level, int strength, int agility, int intelligence, int vitality) {
+        super(dragon, level, strength, agility, intelligence, vitality);
     }
 
     @Override

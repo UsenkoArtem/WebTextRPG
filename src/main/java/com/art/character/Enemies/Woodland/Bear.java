@@ -3,9 +3,8 @@ package com.art.character.Enemies.Woodland;
 import com.art.character.Enemies.StrengthEnemy;
 
 public class Bear extends StrengthEnemy {
-    public Bear(String bear, int i, int i1, int i2, int i3, int i4) {
-
-        super(bear,i,i1,i2,i3,i4);
+    public Bear(String bear, int level, int strength, int agility, int intelligence, int vitality) {
+        super(bear, level, strength, agility, intelligence, vitality);
     }
 
     @Override

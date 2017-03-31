@@ -4,9 +4,8 @@ import com.art.character.Enemies.AgilityEnemy;
 
 
 public class Ghoul extends AgilityEnemy {
-    public Ghoul(String ghoul, int i, int i1, int i2, int i3, int i4) {
-
-        super(ghoul, i, i1, i2, i3, i4);
+    public Ghoul(String cultist, int level, int strength, int agility, int intelligence, int vitality) {
+        super(cultist, level, strength, agility, intelligence, vitality);
     }
 
     @Override

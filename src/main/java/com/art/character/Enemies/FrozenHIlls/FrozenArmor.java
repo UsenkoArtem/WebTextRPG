@@ -3,9 +3,8 @@ package com.art.character.Enemies.FrozenHIlls;
 import com.art.character.Enemies.StrengthEnemy;
 
 public class FrozenArmor extends StrengthEnemy {
-    public FrozenArmor(String frozenArmor, int i, int i1, int i2, int i3, int i4) {
-
-        super(frozenArmor, i, i1, i2, i3, i4);
+    public FrozenArmor(String frozenArmor, int level, int strength, int agility, int intelligence, int vitality) {
+        super(frozenArmor, level, strength, agility, intelligence, vitality);
     }
 
     @Override

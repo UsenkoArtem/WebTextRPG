@@ -12,75 +12,81 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class EnemyConfig {
 
-    @Bean
+    @Bean(name = "Cultist")
     @Scope(value = "prototype")
-    public Enemy cultist () {
-        Enemy cultist = new Cultist("Cultist",1,7,7,12,5);
+    public Enemy cultist() {
+
+        Enemy cultist = new Cultist("Cultist", 1, 7, 7, 12, 5);
         cultist.calculatedStats();
-        return  cultist;
+        return cultist;
 
     }
 
-    @Bean
+    @Bean(name="Demon")
     @Scope(value = "prototype")
     public Enemy demon() {
-         Demon demon = new Demon("Demon",1,7,7,12,5);
-         demon.calculatedStats();
-         return demon;
-    }
-    @Bean
-    @Scope(value = "prototype")
-    public Enemy mummy() {
-        Enemy mummy = new Mummy("Mummy",1,7,7,12,5);
-        mummy.calculatedStats();
-        return  mummy;
+        Demon demon = new Demon("Demon", 1, 7, 7, 12, 5);
+        demon.calculatedStats();
+        return demon;
     }
 
-    @Bean
+    @Bean(name="Mummy")
+    @Scope(value = "prototype")
+    public Enemy mummy() {
+        Enemy mummy = new Mummy("Mummy", 1, 7, 7, 12, 5);
+        mummy.calculatedStats();
+        return mummy;
+    }
+
+    @Bean(name="Scorpion")
     @Scope(value = "prototype")
     public Enemy scorpion() {
         Enemy scorpion = new Scorpion("Scorpion", 1, 7, 7, 12, 5);
         scorpion.calculatedStats();
-        return  scorpion;
+        return scorpion;
     }
 
     @Bean
     @Scope(value = "prototype")
     public Enemy ghost() {
-        Enemy enemy =  new Ghost("Ghost",1,7,7,12,5);
+        Enemy enemy = new Ghost("Ghost", 1, 7, 7, 12, 5);
         enemy.calculatedStats();
-        return  enemy;
+        return enemy;
     }
+
     @Bean
     @Scope(value = "prototype")
     public Enemy ghoul() {
-        Enemy ghoul =  new Ghoul("Ghoul",1,7,7,12,5);
+        Enemy ghoul = new Ghoul("Ghoul", 1, 7, 7, 12, 5);
         ghoul.calculatedStats();
-        return  ghoul;
+        return ghoul;
     }
+
     @Bean
     @Scope(value = "prototype")
     public Enemy necromancer() {
-        Enemy necromancer =  new Necromancer("Necromancer",1,7,7,12,5);
+        Enemy necromancer = new Necromancer("Necromancer", 1, 7, 7, 12, 5);
         necromancer.calculatedStats();
         return necromancer;
     }
+
     @Bean
     @Scope(value = "prototype")
     public Enemy skeleton() {
-        Enemy skeleton  = new Skeleton("Skeleton",1,7,7,12,5);
+        Enemy skeleton = new Skeleton("Skeleton", 1, 7, 7, 12, 5);
         skeleton.calculatedStats();
-        return  skeleton;
+        return skeleton;
 
     }
 
     @Bean
     @Scope(value = "prototype")
     public Enemy dragon() {
-        Enemy dragon = new Dragon("Dragon",1,7,7,12,5);
+        Enemy dragon = new Dragon("Dragon", 1, 7, 7, 12, 5);
         dragon.calculatedStats();
-        return  dragon;
+        return dragon;
     }
+
     @Bean
     @Scope(value = "prototype")
     public Enemy frozenArmor() {
@@ -88,6 +94,7 @@ public class EnemyConfig {
         frozenArmor.calculatedStats();
         return frozenArmor;
     }
+
     @Bean
     @Scope(value = "prototype")
     public Enemy killerSnowMan() {
@@ -95,6 +102,7 @@ public class EnemyConfig {
         killerSnowMan.calculatedStats();
         return killerSnowMan;
     }
+
     @Bean
     @Scope(value = "prototype")
     public Enemy sabletooth() {
@@ -102,13 +110,15 @@ public class EnemyConfig {
         sabletooth.calculatedStats();
         return sabletooth;
     }
-    @Bean
+
+    @Bean(name="Bear")
     @Scope(value = "prototype")
     public Enemy bear() {
         Enemy bear = new Bear("Bear", 1, 7, 7, 12, 5);
         bear.calculatedStats();
         return bear;
     }
+
     @Bean
     @Scope(value = "prototype")
     public Enemy wolf() {
@@ -116,6 +126,7 @@ public class EnemyConfig {
         wolf.calculatedStats();
         return wolf;
     }
+
     @Bean
     @Scope(value = "prototype")
     public Enemy marauder() {
@@ -123,14 +134,5 @@ public class EnemyConfig {
         marauder.calculatedStats();
         return marauder;
     }
-
-
-
-
-
-
-
-
-
 
 }

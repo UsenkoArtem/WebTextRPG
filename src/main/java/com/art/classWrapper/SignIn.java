@@ -1,8 +1,6 @@
 package com.art.classWrapper;
 
-/**
- * Created by Artem on 24.02.2017.
- */
+
 public class SignIn {
     private String login;
     private String password;

@@ -5,8 +5,8 @@ import com.art.character.Enemies.IntelligenceEnemy;
 
 public class Necromancer extends IntelligenceEnemy {
 
-    public Necromancer(String necromancer, int i, int i1, int i2, int i3, int i4) {
-        super(necromancer, i, i1, i2, i3, i4);
+    public Necromancer(String necromancer, int level, int strength, int agility, int intelligence, int vitality) {
+        super(necromancer, level, strength, agility, intelligence, vitality);
     }
 
     @Override

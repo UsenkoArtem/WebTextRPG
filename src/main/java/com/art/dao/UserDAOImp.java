@@ -50,7 +50,7 @@ public class UserDAOImp implements  UserDAO {
     @Override
     public User findBylogin(String login) {
         if (login.isEmpty()) return  null;
-        Query query = getSession().createQuery(" from User  where login= :login");
+        Query query = getSession().createQuery(" from User  where login= :login ");
         query.setString("login",login);
         User user;
         try {

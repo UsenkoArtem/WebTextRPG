@@ -4,9 +4,8 @@ import com.art.character.Enemies.AgilityEnemy;
 
 public class Sabletooth extends AgilityEnemy {
 
-    public Sabletooth(String mummy, int i, int i1, int i2, int i3, int i4) {
-
-        super(mummy, i, i1, i2, i3, i4);
+    public Sabletooth(String sabletooth, int level, int strength, int agility, int intelligence, int vitality) {
+        super(sabletooth, level, strength, agility, intelligence, vitality);
     }
 
     @Override

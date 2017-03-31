@@ -18,7 +18,7 @@ import java.util.Locale;
 Конфигурация SpringMVC
  */
 @Configuration
-@ComponentScan(basePackages = "com.art")
+@ComponentScan(basePackages = "com.art" )
 @EnableWebMvc
 public class SpringMVCConfig extends WebMvcConfigurerAdapter {
     @Override

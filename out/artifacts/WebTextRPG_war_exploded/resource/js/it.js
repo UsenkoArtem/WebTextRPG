@@ -13,14 +13,15 @@ function uneqipe(id, namee, pos ) {
             var price;
             var idd = trs.length;
             var ok;
+            var i;
             debugger;
             var name;
             var max = 0 ;
-            for (var i = 1; i < trs.length; i++) {
+            for ( i = 1; i < trs.length; i++) {
                 var split = tbl.rows[i].cells[0].innerHTML.split(" ");
                max =  Math.max(max, parseInt(split[0]));
             }
-            for (var i = 0; i < trs.length; i++) {
+            for ( i = 0; i < trs.length; i++) {
                 if (tbl.rows[i].cells[0].innerHTML.split(" ")[0] == namee) {
                     name = tbl.rows[i].cells[1].innerHTML;
                     agility = tbl.rows[i].cells[2].innerHTML;
@@ -33,7 +34,7 @@ function uneqipe(id, namee, pos ) {
                     break;
                 }
             }
-            if (ok != 1) return;
+            if (ok !== 1) return;
             ++max;
             var newrow = tbl.insertRow(idd - 1);
             newrow.style.height = 10;
@@ -84,13 +85,14 @@ function equip(id, namee, pos) {
             var ok;
             debugger;
             var name;
-            var max = 0 ;
-            for (var i = 1; i < trs.length; i++) {
+            var max = 0;
+            var i;
+            for ( i = 1; i < trs.length; i++) {
                 var split = tbl.rows[i].cells[0].innerHTML.split(" ");
                 max  = Math.max(max, parseInt(split[0]));
             }
 
-            for (var i = 0; i < trs.length; i++) {
+            for ( i = 0; i < trs.length; i++) {
                 if ((tbl.rows[i].cells[0].innerHTML.split(" ")[1] == "equip") &
                     (tbl.rows[i].cells[0].innerHTML.split(" ")[2] == pos)) {
                     name = tbl.rows[i].cells[1].innerHTML;
@@ -136,7 +138,7 @@ function equip(id, namee, pos) {
                 ++idd;
             }
             ok = 0;
-            for (var i = 0; i < trs.length; i++) {
+            for ( i = 0; i < trs.length; i++) {
                 if (tbl.rows[i].cells[0].innerHTML.split(" ")[0] == namee) {
                     name = tbl.rows[i].cells[1].innerHTML;
                     agility = tbl.rows[i].cells[2].innerHTML;
@@ -149,7 +151,7 @@ function equip(id, namee, pos) {
                     break;
                 }
             }
-            if (ok!=1) return;
+            if (ok!==1) return;
             ++max;
             var newrow = tbl.insertRow(1);
             newrow.style.height=10;
@@ -215,14 +217,14 @@ function deleteEquipeItem(id, name) {
             var price;
             var idd = trs.length;
             var ok;
-
+            var i;
             debugger;
             var max = 0 ;
-            for (var i = 1; i < trs.length; i++) {
+            for ( i = 1; i < trs.length; i++) {
                 var split = tbl.rows[i].cells[0].innerHTML.split(" ");
                 max = Math.max(max, parseInt(split[0]));
             }
-            for (var i = 0; i < trs.length; i++) {
+            for ( i = 0; i < trs.length; i++) {
                 if (tbl.rows[i].cells[0].innerHTML.split(" ")[0] == name) {
                     name = tbl.rows[i].cells[1].innerHTML;
                     agility = tbl.rows[i].cells[2].innerHTML;

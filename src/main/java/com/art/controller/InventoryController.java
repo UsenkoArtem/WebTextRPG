@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-@ComponentScan({"com.art"})
+@ComponentScan({"com.art.dao"})
 public class InventoryController {
     @Autowired
     PlayerDAO playerDAO;
@@ -23,7 +23,8 @@ public class InventoryController {
     private HttpServletRequest req;
 
     @RequestMapping(value = "/inventory", method = RequestMethod.GET)
-    public String inventory(ModelMap map) {
+    public String inventory(ModelMap map) throws ClassNotFoundException {
+
         String name  = (String) req.getSession().getAttribute("name");
         if (name == null ) return "redirect:/";
         String type = (String) req.getSession().getAttribute("type");
@@ -43,11 +44,10 @@ public class InventoryController {
             player = null;
 
         }
-
-        map.put("Player", player);
         map.put("item", playerDAO.getWearItem(player));
         map.put("items", playerDAO.getItem(player));
+
+        map.put("Player", player);
         return "Inventory";
     }
-
 }

@@ -3,12 +3,11 @@ import com.art.character.Enemies.StrengthEnemy;
 
 public class Marauder extends StrengthEnemy {
 
-    public Marauder(String marauder, int i, int i1, int i2, int i3, int i4) {
-
-        super(marauder,i,i1,i2,i3,i4);
+    public Marauder(String marauder, int level, int strength, int agility, int intelligence, int vitality) {
+        super(marauder, level, strength, agility, intelligence, vitality);
     }
 
-    @Override
+        @Override
     public void calculatedStats() {
         int level=getLevel();
         setAgility(getAgility()+level*3);

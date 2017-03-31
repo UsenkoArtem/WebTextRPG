@@ -3,9 +3,8 @@ package com.art.character.Enemies.Boneyard;
 import com.art.character.Enemies.StrengthEnemy;
 
 public class Skeleton extends StrengthEnemy {
-    public Skeleton(String skeleton, int i, int i1, int i2, int i3, int i4) {
-
-        super(skeleton, i, i1, i2, i3, i4);
+    public Skeleton(String skeleton, int level, int strength, int agility, int intelligence, int vitality) {
+        super(skeleton, level, strength, agility, intelligence, vitality);
     }
 
     @Override
