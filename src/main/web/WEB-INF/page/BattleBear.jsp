@@ -17,6 +17,15 @@
         <%@include file="/resource/js/battle.js"%>
     </script>
     <title>Battle</title>
+
+<audio id="music" autoplay="autoplay" loop="loop">
+					<source src="/resource/sound/battle.ogg"/>
+</audio>
+<script>
+var vol=document.getElementById("music");
+vol.volume=0.2;
+</script>
+
 </head>
 <body >
 <div align="center">
