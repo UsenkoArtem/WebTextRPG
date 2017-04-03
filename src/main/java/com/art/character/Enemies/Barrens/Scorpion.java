@@ -4,8 +4,8 @@ import com.art.character.Enemies.AgilityEnemy;
 
 public class Scorpion extends AgilityEnemy {
 
-    public Scorpion(String cultist, int level, int strength, int agility, int intelligence, int vitality) {
-        super(cultist, level, strength, agility, intelligence, vitality);
+    public Scorpion(String scorpion, int level, int strength, int agility, int intelligence, int vitality) {
+        super(scorpion, level, strength, agility, intelligence, vitality);
     }
 
     @Override
