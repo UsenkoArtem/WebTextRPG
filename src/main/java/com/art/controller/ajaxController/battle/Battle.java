@@ -21,4 +21,13 @@ public class Battle {
 
         return "11";
     }
+    @RequestMapping(value= "/body/{enemy}", method=RequestMethod.POST, produces ="application/json")
+    @ResponseBody
+    public String bodyAttack(@PathVariable String enemy , @RequestBody EnemyBattle enemyBattle){
+        System.out.println(enemy+ " " + enemyBattle.getHealth());
+        Enemy bean = (Enemy) applicationContext.getBean(enemy);
+        System.out.println(bean.toString());
+
+        return "11";
+    }
 }

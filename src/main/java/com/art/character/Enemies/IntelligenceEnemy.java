@@ -1,8 +1,8 @@
 package com.art.character.Enemies;
 
 public class IntelligenceEnemy extends Enemy {
-    public IntelligenceEnemy(String cultist, int level, int strength, int agility, int intelligence, int vitality) {
-        super(cultist, level, strength, agility, intelligence, vitality);
+    public IntelligenceEnemy(String name, int level, int strength, int agility, int intelligence, int vitality) {
+        super(name, level, strength, agility, intelligence, vitality);
     }
 
     @Override

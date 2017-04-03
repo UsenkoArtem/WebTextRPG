@@ -9,9 +9,7 @@
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <introspection-schemas>*:rpg</introspection-schemas>
       <resolve-scope>rpg:</resolve-scope>
-      <unqualified-resolve-schemas>rpg:</unqualified-resolve-schemas>
     </data-source>
   </component>
 </project>
