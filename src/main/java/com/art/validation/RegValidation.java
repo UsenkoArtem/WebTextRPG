@@ -28,7 +28,7 @@ public class RegValidation implements Validator {
             errors.rejectValue("login", "RegForm.login.MinSize");
         } else if (registration.getLogin().length() > 10) {
             errors.rejectValue("login", "RegForm.login.MaxSize");
-        } else if (userDAO.findBylogin(registration.getLogin()) != null) {
+        } else if (userDAO.findByLogin(registration.getLogin()) != null) {
             errors.rejectValue("login", "RegForm.login.Duplication");
         }
 

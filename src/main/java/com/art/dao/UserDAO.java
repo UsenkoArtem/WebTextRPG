@@ -7,7 +7,8 @@ public interface UserDAO {
     public User findById(int id );
     public void addUser(User user);
     public void deleteUser(int id);
-    public User findBylogin(String login);
+    public User findByLogin(String login);
     public User findByEmail(String email);
-    public void Update(User user);
+    public void update(User user);
+    public int count();
 }

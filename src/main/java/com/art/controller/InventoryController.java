@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 @ComponentScan({"com.art.dao"})
 public class InventoryController {
     @Autowired
+    private
     PlayerDAO playerDAO;
     @Autowired
     private HttpServletRequest req;

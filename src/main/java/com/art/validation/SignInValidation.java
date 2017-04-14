@@ -29,7 +29,7 @@ public class SignInValidation implements Validator {
             errors.rejectValue("login", "UserForm.login.MaxSize");
         } else if (signIn.getLogin().length() < 3) {
             errors.rejectValue("login", "UserForm.login.MinSize");
-        } else if (userDAO.findBylogin(signIn.getLogin()) == null) {
+        } else if (userDAO.findByLogin(signIn.getLogin()) == null) {
             errors.rejectValue("login", "UserForm.login.not");
         }
 
@@ -39,8 +39,8 @@ public class SignInValidation implements Validator {
             errors.rejectValue("password", "UserForm.password.MaxSize");
         } else if (signIn.getPassword().length() < 6) {
             errors.rejectValue("password", "UserForm.password.MinSize");
-        } else if (userDAO.findBylogin(signIn.getLogin()) != null) {
-            User bylogin = userDAO.findBylogin(signIn.getLogin());
+        } else if (userDAO.findByLogin(signIn.getLogin()) != null) {
+            User bylogin = userDAO.findByLogin(signIn.getLogin());
             if (!bylogin.getPassword().equals(signIn.getPassword())) {
                 errors.rejectValue("password", "UserForm.password.Incorrect");
             }

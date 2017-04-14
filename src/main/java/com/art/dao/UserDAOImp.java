@@ -4,13 +4,13 @@ import com.art.model.User;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.exception.SQLGrammarException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 @Repository("UserDao")
 @Transactional
 @EnableTransactionManagement
@@ -48,14 +48,14 @@ public class UserDAOImp implements  UserDAO {
     }
 
     @Override
-    public User findBylogin(String login) {
+    public User findByLogin(String login) {
         if (login.isEmpty()) return  null;
-        Query query = getSession().createQuery(" from User  where login= :login ");
+        Query query = getSession().createQuery(" FROM User  where login= :login ");
         query.setString("login",login);
         User user;
         try {
              user = (User) query.uniqueResult();
-        } catch (SQLGrammarException e ) {
+        } catch (NullPointerException e ) {
             user = null;
         }
         return  user;
@@ -63,20 +63,25 @@ public class UserDAOImp implements  UserDAO {
     @Override
     public User findByEmail(String email) {
         if (email.isEmpty()) return  null;
-        Query query = getSession().createQuery(" from User  where email= :email");
+        Query query = getSession().createQuery("  FROM User  where email= :email");
         query.setString("email",email);
 
         User user;
         try {
             user = (User) query.uniqueResult();
-        } catch (SQLGrammarException e ) {
+        } catch (NullPointerException e ) {
             user = null;
         }
         return  user;
     }
     @Override
-    public  void Update(User user) {
+    public  void update(User user) {
         getSession().update(user);
+    }
+
+    @Override
+    public int count() {
+        return  getSession().createCriteria(User.class).list().size();
     }
 
 }

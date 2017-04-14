@@ -32,7 +32,7 @@ public class StatsController {
     @ResponseBody
     public String strenght() {
         String name = (String) req.getSession().getAttribute("name");
-        User bylogin = userDAO.findBylogin(name);
+        User bylogin = userDAO.findByLogin(name);
         if (bylogin.getUserdetails().getPoint() < 1) return "";
         bylogin.getUserdetails().setPoint(bylogin.getUserdetails().getPoint() - 1);
         bylogin.getUserdetails().setStrenght(bylogin.getUserdetails().getStrenght() + 1);
@@ -47,7 +47,7 @@ public class StatsController {
     @ResponseBody
     public String intelligence() {
         String name = (String) req.getSession().getAttribute("name");
-        User bylogin = userDAO.findBylogin(name);
+        User bylogin = userDAO.findByLogin(name);
         if (bylogin.getUserdetails().getPoint() < 1) return "";
         bylogin.getUserdetails().setPoint(bylogin.getUserdetails().getPoint() - 1);
         bylogin.getUserdetails().setIntelligence(bylogin.getUserdetails().getIntelligence() + 1);
@@ -62,7 +62,7 @@ public class StatsController {
     @ResponseBody
     public String vitality() {
         String name = (String) req.getSession().getAttribute("name");
-        User bylogin = userDAO.findBylogin(name);
+        User bylogin = userDAO.findByLogin(name);
         if (bylogin.getUserdetails().getPoint() < 1) return "";
         bylogin.getUserdetails().setPoint(bylogin.getUserdetails().getPoint() - 1);
         bylogin.getUserdetails().setVitality(bylogin.getUserdetails().getVitality() + 1);
@@ -77,7 +77,7 @@ public class StatsController {
     @ResponseBody
     public String agility() {
         String name = (String) req.getSession().getAttribute("name");
-        User bylogin = userDAO.findBylogin(name);
+        User bylogin = userDAO.findByLogin(name);
         if (bylogin.getUserdetails().getPoint() < 1) return "";
         bylogin.getUserdetails().setPoint(bylogin.getUserdetails().getPoint() - 1);
         bylogin.getUserdetails().setAgility(bylogin.getUserdetails().getAgility() + 1);
