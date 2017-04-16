@@ -17,6 +17,14 @@
     </script>
     <title> World Map </title>
 
+<audio id="music" autoplay="autoplay" loop="loop">
+					<source src="/resource/sound/home2.ogg"/>
+</audio>
+<script>
+var vol=document.getElementById("music");
+vol.volume=0.2
+</script>
+
 </head>
 <body onUnload="window.history.go(1)">
 <div class="menu-wrap">

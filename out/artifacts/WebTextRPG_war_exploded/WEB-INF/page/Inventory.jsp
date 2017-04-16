@@ -23,6 +23,15 @@
     <script type="text/javascript">
         <%@include file="/resource/js/it.js"%>
     </script>
+
+<audio id="music" autoplay="autoplay" loop="loop">
+					<source src="/resource/sound/home3.ogg"/>
+</audio>
+<script>
+var vol=document.getElementById("music");
+vol.volume=0.2;
+</script>
+
     <title> Inventory </title>
     <div class="menu-wrap">
         <nav class="menu">
