@@ -47,9 +47,22 @@ public class Battle {
          player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
          attackToHead(player,enemy);
          if (enemy.getHealth()<=0) {
-          player.addExp(enemy.getLevel()*50);
-          player.addMoney(20);
+          Victory(enemy.getLevel()*50, 20);
          }
         return new Answer(player.getHealth(), enemy.getHealth());
+    }
+
+    public void Victory(int exp, int money ){
+        player.addExp(exp);
+        player.addMoney(money);
+    }
+    @RequestMapping(value= "/body/{enemy}", method=RequestMethod.POST, produces ="application/json")
+    @ResponseBody
+    public String bodyAttack(@PathVariable String enemy , @RequestBody EnemyBattle enemyBattle){
+        System.out.println(enemy+ " " + enemyBattle.getHealth());
+        Enemy bean = (Enemy) applicationContext.getBean(enemy);
+        System.out.println(bean.toString());
+
+        return "11";
     }
 }

@@ -16,7 +16,7 @@ public class EnemyConfig {
     @Scope(value = "prototype")
     public Enemy cultist() {
 
-        Enemy cultist = new Cultist("Cultist", 1, 7, 7, 12, 5);
+        Enemy cultist = new Cultist("Cultist", 10, 10, 10, 12, 10);
         cultist.calculatedStats();
         return cultist;
 
@@ -25,7 +25,7 @@ public class EnemyConfig {
     @Bean(name="Demon")
     @Scope(value = "prototype")
     public Enemy demon() {
-        Demon demon = new Demon("Demon", 1, 7, 7, 12, 5);
+        Demon demon = new Demon("Demon", 17, 12, 10, 10, 12);
         demon.calculatedStats();
         return demon;
     }
@@ -33,7 +33,7 @@ public class EnemyConfig {
     @Bean(name="Mummy")
     @Scope(value = "prototype")
     public Enemy mummy() {
-        Enemy mummy = new Mummy("Mummy", 1, 7, 7, 12, 5);
+        Enemy mummy = new Mummy("Mummy", 13, 10, 10, 10, 10);
         mummy.calculatedStats();
         return mummy;
     }
@@ -41,7 +41,7 @@ public class EnemyConfig {
     @Bean(name="Scorpion")
     @Scope(value = "prototype")
     public Enemy scorpion() {
-        Enemy scorpion = new Scorpion("Scorpion", 1, 7, 7, 12, 5);
+        Enemy scorpion = new Scorpion("Scorpion", 15, 10, 10, 10, 10);
         scorpion.calculatedStats();
         return scorpion;
     }
@@ -49,7 +49,7 @@ public class EnemyConfig {
     @Bean(name = "Ghost")
     @Scope(value = "prototype")
     public Enemy ghost() {
-        Enemy enemy = new Ghost("Ghost", 1, 7, 7, 12, 5);
+        Enemy enemy = new Ghost("Ghost", 25, 10, 10, 14, 10);
         enemy.calculatedStats();
         return enemy;
     }
@@ -57,7 +57,7 @@ public class EnemyConfig {
     @Bean(name = "Ghoul")
     @Scope(value = "prototype")
     public Enemy ghoul() {
-        Enemy ghoul = new Ghoul("Ghoul", 1, 7, 7, 12, 5);
+        Enemy ghoul = new Ghoul("Ghoul", 20, 12, 14, 12, 12);
         ghoul.calculatedStats();
         return ghoul;
     }
@@ -65,7 +65,7 @@ public class EnemyConfig {
     @Bean(name = "Necromancer")
     @Scope(value = "prototype")
     public Enemy necromancer() {
-        Enemy necromancer = new Necromancer("Necromancer", 1, 7, 7, 12, 5);
+        Enemy necromancer = new Necromancer("Necromancer", 28, 10, 10, 14, 12);
         necromancer.calculatedStats();
         return necromancer;
     }
@@ -73,7 +73,7 @@ public class EnemyConfig {
     @Bean(name = "Skeleton")
     @Scope(value = "prototype")
     public Enemy skeleton() {
-        Enemy skeleton = new Skeleton("Skeleton", 1, 7, 7, 12, 5);
+        Enemy skeleton = new Skeleton("Skeleton", 23, 10, 10, 10, 10);
         skeleton.calculatedStats();
         return skeleton;
 
@@ -82,7 +82,7 @@ public class EnemyConfig {
     @Bean(name = "Dragon")
     @Scope(value = "prototype")
     public Enemy dragon() {
-        Enemy dragon = new Dragon("Dragon", 1, 7, 7, 12, 5);
+        Enemy dragon = new Dragon("Dragon", 40, 15, 12, 10, 15);
         dragon.calculatedStats();
         return dragon;
     }
@@ -90,7 +90,7 @@ public class EnemyConfig {
     @Bean(name = "FrozenArmor")
     @Scope(value = "prototype")
     public Enemy frozenArmor() {
-        Enemy frozenArmor = new FrozenArmor("FrozenArmor", 1, 7, 7, 12, 5);
+        Enemy frozenArmor = new FrozenArmor("FrozenArmor", 36, 14, 10, 10, 14);
         frozenArmor.calculatedStats();
         return frozenArmor;
     }
@@ -98,7 +98,7 @@ public class EnemyConfig {
     @Bean(name = "KillerSnowMan")
     @Scope(value = "prototype")
     public Enemy killerSnowMan() {
-        Enemy killerSnowMan = new KillerSnowMan("KillerSnowMan", 1, 7, 7, 12, 5);
+        Enemy killerSnowMan = new KillerSnowMan("KillerSnowMan", 33, 10, 10, 15, 10);
         killerSnowMan.calculatedStats();
         return killerSnowMan;
     }
@@ -106,7 +106,7 @@ public class EnemyConfig {
     @Bean(name = "Sabletooth")
     @Scope(value = "prototype")
     public Enemy sabletooth() {
-        Enemy sabletooth = new Sabletooth("Sabletooth", 1, 7, 7, 12, 5);
+        Enemy sabletooth = new Sabletooth("Sabletooth", 31, 12, 14, 10, 12);
         sabletooth.calculatedStats();
         return sabletooth;
     }
@@ -114,7 +114,7 @@ public class EnemyConfig {
     @Bean(name="Bear")
     @Scope(value = "prototype")
     public Enemy bear() {
-        Enemy bear = new Bear("Bear", 1, 7, 7, 12, 5);
+        Enemy bear = new Bear("Bear", 2, 10, 10, 10, 10);
         bear.calculatedStats();
         return bear;
     }
@@ -122,7 +122,7 @@ public class EnemyConfig {
     @Bean(name = "Wolf")
     @Scope(value = "prototype")
     public Enemy wolf() {
-        Enemy wolf = new Wolf("Wolf", 1, 7, 7, 12, 5);
+        Enemy wolf = new Wolf("Wolf", 4, 10, 10, 10, 10);
         wolf.calculatedStats();
         return wolf;
     }
@@ -130,7 +130,7 @@ public class EnemyConfig {
     @Bean(name = "Marauder")
     @Scope(value = "prototype")
     public Enemy marauder() {
-        Enemy marauder = new Marauder("Marauder", 1, 7, 7, 12, 5);
+        Enemy marauder = new Marauder("Marauder", 6, 10, 10, 10, 10);
         marauder.calculatedStats();
         return marauder;
     }

@@ -5,8 +5,8 @@ import com.art.character.Enemies.IntelligenceEnemy;
 
 public class Ghost extends IntelligenceEnemy {
 
-    public Ghost(String cultist, int level, int strength, int agility, int intelligence, int vitality) {
-        super(cultist, level, strength, agility, intelligence, vitality);
+    public Ghost(String ghost, int level, int strength, int agility, int intelligence, int vitality) {
+        super(ghost, level, strength, agility, intelligence, vitality);
     }
 
     @Override
