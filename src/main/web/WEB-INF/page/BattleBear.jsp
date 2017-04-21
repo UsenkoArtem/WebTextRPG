@@ -7,7 +7,7 @@
 <head>
     <style>
         body {
-            background-image: url("/resource/image/wood.png");
+            background-image: url("/resource/image/sprites/Images/Locations/BattleScenes/woodland.png");
             background-size: cover;
         }
     </style>
@@ -34,9 +34,10 @@ vol.volume=0.2;
     <img src="<c:url value="/resource/image/sprites/Images/Enemies/WoodLand/bear.png"/>"
          height="350" width="350">
 </div>
-<hr>
-<div style="position:  absolute; top:20% ; color: #4CAF50">
-    <table style=" color: #4CAF50;" id="enemy">
+
+<div style="position:  absolute; top:60% ; left:85%; color:#ff0000">
+    <table style=" color: #ff0000;" id="enemy">
+
         <tr>
             <td style="padding: 20px"> Health</td>
             <td style="padding: 20px" id="health"> ${Bear.health}</td>
@@ -56,26 +57,45 @@ vol.volume=0.2;
 </div>
 <div style="position: absolute; top: 60%">
     <table style=" color: #4CAF50;">
+
         <tr>
             <td style="padding: 20px"> Health</td>
             <td style="padding: 20px"> ${Player.health}</td>
-            <td style="padding: 20px">
-                <input type="button" value="Head attack" onclick="headAttack('${Bear.name}')"/>
-            </td>
+
         </tr>
         <tr>
             <td style="padding: 20px"> Attack</td>
             <td style="padding: 20px"> ${Player.attack}</td>
-            <td style="padding: 20px">
-                <input type="button" value="Body attack"/>
-            </td>
+
         </tr>
         <tr>
             <td style="padding: 20px"> Defense</td>
             <td style="padding: 20px"> ${Player.defense}</td>
+
+        </tr>
+    </table>
+</div>
+
+<div style="position:  absolute; top:20% ; left:25%;">
+    <table style=" color: #4CAF50;" >
+
+        <tr>
             <td style="padding: 20px">
-                <input type="button" value="Legs attack"/>
+                <input type="button" value="Head attack" onclick="headAttack('${Bear.name}')"/>
             </td>
+
+        </tr>
+        <tr>
+            <td style="padding: 20px">
+                <input type="button" value="Body attack" onClick="bodyAttack('${Bear.name}')"/>
+            </td>
+
+        </tr>
+        <tr>
+            <td style="padding: 20px">
+                <input type="button" value="Legs attack" onclick="legsAttack('${Bear.name}')"/>
+            </td>
+
         </tr>
     </table>
 </div>
