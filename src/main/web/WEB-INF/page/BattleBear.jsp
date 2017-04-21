@@ -7,7 +7,7 @@
 <head>
     <style>
         body {
-            background-image: url("/resource/image/wood.png");
+            background-image: url("/resource/image/sprites/Images/Locations/BattleScenes/woodland.png");
             background-size: cover;
         }
     </style>
@@ -34,10 +34,10 @@ vol.volume=0.2;
     <img src="<c:url value="/resource/image/sprites/Images/Enemies/WoodLand/bear.png"/>"
          height="350" width="350">
 </div>
-<hr>
-<div style="position:  absolute; top:60% ; left:80%; color:#ff0000">
+
+<div style="position:  absolute; top:60% ; left:85%; color:#ff0000">
     <table style=" color: #ff0000;" id="enemy">
-        <tr><td style="padding-left:65px; padding-top:15px;" colspan=2">Enemy </td></tr>
+
         <tr>
             <td style="padding: 20px"> Health</td>
             <td style="padding: 20px" id="health"> ${Bear.health}</td>
@@ -57,7 +57,7 @@ vol.volume=0.2;
 </div>
 <div style="position: absolute; top: 60%">
     <table style=" color: #4CAF50;">
-        <tr><td style=" padding-top:15px; padding-left:70px;" colspan=2>Player </td></tr>
+
         <tr>
             <td style="padding: 20px"> Health</td>
             <td style="padding: 20px"> ${Player.health}</td>
