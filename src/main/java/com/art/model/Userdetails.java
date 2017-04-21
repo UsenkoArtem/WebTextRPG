@@ -12,13 +12,13 @@ public class Userdetails {
 
     @Override
     public String toString() {
-        return "Userdetails{" +
+        return "UserDetails{" +
                 "id=" + id +
                 ", level=" + level +
                 ", type='" + type + '\'' +
                 ", items='" + items + '\'' +
                 ", wearingItems='" + wearingItems + '\'' +
-                ", strenght=" + strenght +
+                ", strength=" + strenght +
                 ", vitality=" + vitality +
                 ", agility=" + agility +
                 ", intelligence=" + intelligence +

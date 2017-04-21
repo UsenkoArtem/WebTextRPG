@@ -12,14 +12,16 @@
         }
     </style>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
+    <script type="text/javascript">
+        <%@include file="/resource/js/jquery-1.6.3.min.js"%>
+    </script>
     <script type="text/javascript">
         <%@include file="/resource/js/battle.js"%>
     </script>
     <title>Battle</title>
 
 <audio id="music" autoplay="autoplay" loop="loop">
-					<source src="/resource/sound/battle.ogg"/>
+					<source src="<c:url value="/resource/sound/battle.ogg"/>"/>
 </audio>
 <script>
 var vol=document.getElementById("music");

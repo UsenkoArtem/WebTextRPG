@@ -29,7 +29,7 @@ public class ItemsController {
     public String delete(@PathVariable int id) {
         String name = (String) req.getSession().getAttribute("name");
         if (name == null ) return "redirect:/";
-        User bylogin = userDAO.findBylogin(name);
+        User bylogin = userDAO.findByLogin(name);
         Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
         playerDAO.deleteItem(player, bylogin, id);
         req.getSession().setAttribute("user", player);
@@ -41,7 +41,7 @@ public class ItemsController {
     public String unequipe(@PathVariable int id) {
         String name = (String) req.getSession().getAttribute("name");
         if (name == null ) return "redirect:/";
-        User bylogin = userDAO.findBylogin(name);
+        User bylogin = userDAO.findByLogin(name);
         Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
          player = playerDAO.unequipe(player, bylogin, id);
         req.getSession().setAttribute("user", player);
@@ -53,7 +53,7 @@ public class ItemsController {
     public String deleteEquipeItem(@PathVariable int id) {
         String name = (String) req.getSession().getAttribute("name");
         if (name == null ) return "redirect:/";
-        User bylogin = userDAO.findBylogin(name);
+        User bylogin = userDAO.findByLogin(name);
         Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
         player = playerDAO.deleteEquipeItem(player, bylogin, id);
         req.getSession().setAttribute("user", player);
@@ -65,7 +65,7 @@ public class ItemsController {
     public String equipItem(@PathVariable int id) {
         String name  = (String) req.getSession().getAttribute("name");
         if (name == null ) return "redirect:/";
-        User bylogin = userDAO.findBylogin(name);
+        User bylogin = userDAO.findByLogin(name);
         Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(),bylogin.getLogin(),bylogin.getUserdetails());
         player = playerDAO.equip(player,bylogin,id);
         req.getSession().setAttribute("user",player);

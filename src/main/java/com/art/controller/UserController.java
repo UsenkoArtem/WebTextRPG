@@ -54,7 +54,7 @@ public class UserController {
         if (result.hasErrors()) {
             return "SignIn";
         }
-        User user = userDAO.findBylogin(signIn.getLogin());
+        User user = userDAO.findByLogin(signIn.getLogin());
         Player player = playerDAO.getPlayer(user.getUserdetails().getType(),user.getLogin(), user.getUserdetails());
         req.getSession().setAttribute("name", player.getName());
         req.getSession().setAttribute("type", player.getClass().getSimpleName());

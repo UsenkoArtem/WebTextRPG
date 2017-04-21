@@ -195,6 +195,9 @@ public class Player extends Character {
         calculateAttack();
         calculateDefense();
     }
+    public void addMoney(int money) {
+        setMoney(getMoney()+money);
+    }
 
     @Override
     public String toString() {
@@ -213,4 +216,6 @@ public class Player extends Character {
         return "" + getAgility() + " " + getVitality() + " " + getIntelligence() + " " + getStrength()
                 + " " + getAttack() + " " + getDefense() + " " + getHealth() + " " + getMana() + " " + getPoint() + " " + getLevel() + " " + getExp();
     }
+
+
 }

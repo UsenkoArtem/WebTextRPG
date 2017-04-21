@@ -46,7 +46,7 @@ public class EnemyConfig {
         return scorpion;
     }
 
-    @Bean
+    @Bean(name = "Ghost")
     @Scope(value = "prototype")
     public Enemy ghost() {
         Enemy enemy = new Ghost("Ghost", 25, 10, 10, 14, 10);
@@ -54,7 +54,7 @@ public class EnemyConfig {
         return enemy;
     }
 
-    @Bean
+    @Bean(name = "Ghoul")
     @Scope(value = "prototype")
     public Enemy ghoul() {
         Enemy ghoul = new Ghoul("Ghoul", 20, 12, 14, 12, 12);
@@ -62,7 +62,7 @@ public class EnemyConfig {
         return ghoul;
     }
 
-    @Bean
+    @Bean(name = "Necromancer")
     @Scope(value = "prototype")
     public Enemy necromancer() {
         Enemy necromancer = new Necromancer("Necromancer", 28, 10, 10, 14, 12);
@@ -70,7 +70,7 @@ public class EnemyConfig {
         return necromancer;
     }
 
-    @Bean
+    @Bean(name = "Skeleton")
     @Scope(value = "prototype")
     public Enemy skeleton() {
         Enemy skeleton = new Skeleton("Skeleton", 23, 10, 10, 10, 10);
@@ -79,7 +79,7 @@ public class EnemyConfig {
 
     }
 
-    @Bean
+    @Bean(name = "Dragon")
     @Scope(value = "prototype")
     public Enemy dragon() {
         Enemy dragon = new Dragon("Dragon", 40, 15, 12, 10, 15);
@@ -87,7 +87,7 @@ public class EnemyConfig {
         return dragon;
     }
 
-    @Bean
+    @Bean(name = "FrozenArmor")
     @Scope(value = "prototype")
     public Enemy frozenArmor() {
         Enemy frozenArmor = new FrozenArmor("FrozenArmor", 36, 14, 10, 10, 14);
@@ -95,7 +95,7 @@ public class EnemyConfig {
         return frozenArmor;
     }
 
-    @Bean
+    @Bean(name = "KillerSnowMan")
     @Scope(value = "prototype")
     public Enemy killerSnowMan() {
         Enemy killerSnowMan = new KillerSnowMan("KillerSnowMan", 33, 10, 10, 15, 10);
@@ -103,7 +103,7 @@ public class EnemyConfig {
         return killerSnowMan;
     }
 
-    @Bean
+    @Bean(name = "Sabletooth")
     @Scope(value = "prototype")
     public Enemy sabletooth() {
         Enemy sabletooth = new Sabletooth("Sabletooth", 31, 12, 14, 10, 12);
@@ -119,7 +119,7 @@ public class EnemyConfig {
         return bear;
     }
 
-    @Bean
+    @Bean(name = "Wolf")
     @Scope(value = "prototype")
     public Enemy wolf() {
         Enemy wolf = new Wolf("Wolf", 4, 10, 10, 10, 10);
@@ -127,7 +127,7 @@ public class EnemyConfig {
         return wolf;
     }
 
-    @Bean
+    @Bean(name = "Marauder")
     @Scope(value = "prototype")
     public Enemy marauder() {
         Enemy marauder = new Marauder("Marauder", 6, 10, 10, 10, 10);
