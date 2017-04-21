@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="62450b0b-87e2-44ab-913b-3eb4e0ca1c6f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/WebTextRPG - Ярлык.lnk" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/WebTextRPG.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="62450b0b-87e2-44ab-913b-3eb4e0ca1c6f" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1378,12 +1374,12 @@
       <workItem from="1490937017004" duration="4252000" />
       <workItem from="1490953136097" duration="1872000" />
       <workItem from="1491219967286" duration="4937000" />
-      <workItem from="1492343090850" duration="223000" />
+      <workItem from="1492343090850" duration="473000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113376000" />
+    <option name="totallyTimeSpent" value="113626000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1396,7 +1392,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
