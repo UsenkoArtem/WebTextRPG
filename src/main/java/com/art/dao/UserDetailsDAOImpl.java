@@ -12,8 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @EnableTransactionManagement
 public class UserDetailsDAOImpl implements  UserDetailsDAO {
+    private final SessionFactory sessionFactory;
+
     @Autowired
-    private  SessionFactory sessionFactory;
+    public UserDetailsDAOImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     private Session getSession(){
         return sessionFactory.getCurrentSession();

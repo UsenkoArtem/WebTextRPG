@@ -1,9 +1,6 @@
 package com.art.controller;
 
-import com.art.character.Heroes.Mage;
 import com.art.character.Heroes.Player;
-import com.art.character.Heroes.Rogue;
-import com.art.character.Heroes.Warrior;
 import com.art.dao.PlayerDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -17,34 +14,24 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @ComponentScan({"com.art.dao"})
 public class InventoryController {
-    @Autowired
-    private
+    private final
     PlayerDAO playerDAO;
+    private final HttpServletRequest req;
+
     @Autowired
-    private HttpServletRequest req;
+    public InventoryController(PlayerDAO playerDAO, HttpServletRequest req) {
+        this.playerDAO = playerDAO;
+        this.req = req;
+    }
 
     @RequestMapping(value = "/inventory", method = RequestMethod.GET)
     public String inventory(ModelMap map) throws ClassNotFoundException {
 
-        String name  = (String) req.getSession().getAttribute("name");
-        if (name == null ) return "redirect:/";
+        String name = (String) req.getSession().getAttribute("name");
+        if (name == null) return "redirect:/";
         String type = (String) req.getSession().getAttribute("type");
-        Player player;
-        if (type.equals("Warrior")) {
-            player = (Warrior) req.getSession().getAttribute("user");
+        Player player = playerDAO.playerGetType(type);
 
-        } else if (type.equals("Rogue")) {
-            player = (Rogue) req.getSession().getAttribute("user");
-            ;
-
-        } else if (type.equals("Mage")) {
-            player = (Mage) req.getSession().getAttribute("user");
-            ;
-
-        } else {
-            player = null;
-
-        }
         map.put("item", playerDAO.getWearItem(player));
         map.put("items", playerDAO.getItem(player));
 

@@ -56,7 +56,7 @@ vol.volume=0.2;
     </table>
 </div>
 <div style="position: absolute; top: 60%">
-    <table style=" color: #4CAF50;">
+    <table id = "player" style=" color: #4CAF50">
 
         <tr>
             <td style="padding: 20px"> Health</td>

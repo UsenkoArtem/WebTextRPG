@@ -24,21 +24,20 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class UserController {
 
+    private final PlayerDAO playerDAO;
+    private final HttpServletRequest req;
+    private final UserDAO userDAO;
+    private final SignInValidation signInValidation;
+    private final RegValidation regValidation;
 
     @Autowired
-    private  PlayerDAO playerDAO;
-
-    @Autowired
-    private HttpServletRequest req;
-
-    @Autowired
-    private UserDAO userDAO;
-
-    @Autowired
-    private SignInValidation signInValidation;
-
-    @Autowired
-    private RegValidation regValidation;
+    public UserController(PlayerDAO playerDAO, HttpServletRequest req, UserDAO userDAO, SignInValidation signInValidation, RegValidation regValidation) {
+        this.playerDAO = playerDAO;
+        this.req = req;
+        this.userDAO = userDAO;
+        this.signInValidation = signInValidation;
+        this.regValidation = regValidation;
+    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(ModelMap map) {
@@ -48,7 +47,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/signIn", method = RequestMethod.POST)
-    public String sigIn(ModelMap map, @ModelAttribute SignIn signIn, BindingResult result) {
+    public String sigIn(@ModelAttribute SignIn signIn, BindingResult result) {
         if (req.getSession().getAttribute("name") != null) return "redirect:index";
         signInValidation.validate(signIn, result);
         if (result.hasErrors()) {
@@ -59,18 +58,18 @@ public class UserController {
         req.getSession().setAttribute("name", player.getName());
         req.getSession().setAttribute("type", player.getClass().getSimpleName());
         req.getSession().setAttribute("user", player);
-        System.out.println(player);
         return "redirect:/index";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String reg(ModelMap map) {
+        if (req.getSession().getAttribute("name") != null) return "redirect:index";
         map.put("registration", new Registration());
         return "registration";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String newUser(ModelMap map, @ModelAttribute Registration registration, BindingResult result) {
+    public String newUser(@ModelAttribute Registration registration, BindingResult result) {
         regValidation.validate(registration, result);
         if (result.hasErrors()) return "registration";
         User user = new User(registration.getLogin(),registration.getPassword(),registration.getEmail());
@@ -98,14 +97,14 @@ public class UserController {
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String start(ModelMap map) {
+    public String start() {
         String name  = (String) req.getSession().getAttribute("name");
         if (name == null ) return "redirect:/";
         return "index";
     }
 
     @RequestMapping(value = "/exit",method = RequestMethod.GET)
-    public  String exit(ModelMap map ) {
+    public  String exit( ) {
         req.getSession().removeAttribute("name");
         req.getSession().removeAttribute("user");
         req.getSession().removeAttribute("type");

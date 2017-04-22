@@ -10,35 +10,46 @@ import com.art.model.Userdetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository("PlayerDao")
 public class PlayerDAOImpl implements PlayerDAO {
-    @Autowired
-    private  UserDetailsDAO userDetailsDAO;
+    private final UserDetailsDAO userDetailsDAO;
+    private final ItemDAO itemDAO;
+    private final HttpServletRequest req;
 
     @Autowired
-    private  ItemDAO itemDAO;
+    public PlayerDAOImpl(UserDetailsDAO userDetailsDAO, ItemDAO itemDAO,HttpServletRequest req) {
+        this.userDetailsDAO = userDetailsDAO;
+        this.itemDAO = itemDAO;
+        this.req = req;
+    }
 
     @Override
     public Player getPlayer(String type, String login, Userdetails userdetails) {
         Player player;
-        if (type.equals("Warrior")) {
-            player = new Warrior(login);
+        switch (type) {
+            case "Warrior":
+                player = new Warrior(login);
 
-        } else if (type.equals("Rogue")) {
-            player = new Rogue(login);
+                break;
+            case "Rogue":
+                player = new Rogue(login);
 
-        } else if (type.equals("Mage")) {
-            player = new Mage(login);
+                break;
+            case "Mage":
+                player = new Mage(login);
 
-        } else {
-            player = null;
-            ;
-            ;
+                break;
+            default:
+                player = null;
 
+
+                break;
         }
+        if (player == null) return null;
         if (userdetails.getAgility() != 0) player.setAgility(userdetails.getAgility());
         if (userdetails.getStrenght() != 0) player.setStrength(userdetails.getStrenght());
         if (userdetails.getIntelligence() != 0) player.setIntelligence(userdetails.getIntelligence());
@@ -54,8 +65,9 @@ public class PlayerDAOImpl implements PlayerDAO {
                 player.addItem(item);
 
             }
-            ;
-        } catch (Exception ex) {
+
+        } catch (NullPointerException ignored) {
+
 
         }
         try {
@@ -64,11 +76,9 @@ public class PlayerDAOImpl implements PlayerDAO {
                 int id = new Integer(s);
                 Item item = itemDAO.findById(id);
                 player.equip(item);
-                ;
-                ;
+
             }
-            ;
-        } catch (NullPointerException ex) {
+        } catch (NullPointerException ignored) {
         }
 
         player.calculateItem(userdetails.getItems(), userdetails.getWearingItems());
@@ -90,7 +100,7 @@ public class PlayerDAOImpl implements PlayerDAO {
                         s = s + "," + item.getId();
                 }
             }
-        } catch (Exception ex) {
+        } catch (Exception ignored) {
         }
         if (s.isEmpty()) s = null;
         return s;
@@ -107,7 +117,7 @@ public class PlayerDAOImpl implements PlayerDAO {
                         s = s + "," + item.getId();
                 }
             }
-        } catch (Exception ex) {
+        } catch (Exception ignored) {
         }
         if (s.isEmpty()) s = null;
         return s;
@@ -139,9 +149,9 @@ public class PlayerDAOImpl implements PlayerDAO {
     public String setItem(User user, int id) {
         String items = user.getUserdetails().getItems();
         try {
-            if (items!=null) {
-            items = items + "," + Integer.toString(id); }
-            else {
+            if (items != null) {
+                items = items + "," + Integer.toString(id);
+            } else {
                 items = Integer.toString(id);
             }
         } catch (NullPointerException ex) {
@@ -151,55 +161,80 @@ public class PlayerDAOImpl implements PlayerDAO {
     }
 
     @Override
-    public Player deleteItem(Player player, User user, int id) {
+    public void deleteItem(Player player, User user, int id) {
         player.deleteItem(itemDAO.findById(id));
         String s = getItemList(player);
         user.getUserdetails().setItems(s);
         userDetailsDAO.update(user.getUserdetails());
-        return  player;
     }
 
     @Override
     public Player unequipe(Player player, User user, int id) {
         Item item1 = itemDAO.findById(id);
-        if (item1==null) return player;
+        if (item1 == null) return player;
         player.unequip(item1);
         String s = getWearitem(player);
         user.getUserdetails().setWearingItems(s);
         String items = setItem(user, id);
         user.getUserdetails().setItems(items);
         userDetailsDAO.update(user.getUserdetails());
-        return  player;
+        return player;
 
     }
 
     @Override
     public Player deleteEquipeItem(Player player, User user, int id) {
         Item item = itemDAO.findById(id);
-        if (item==null) return player;
+        if (item == null) return player;
         player.unequip(item);
         String s = getWearitem(player);
         user.getUserdetails().setWearingItems(s);
         player.deleteItem(item);
         s = getItemList(player);
         userDetailsDAO.update(user.getUserdetails());
-        return  player;
+        return player;
     }
 
     @Override
     public Player equip(Player player, User user, int id) {
         Item item = itemDAO.findById(id);
-        if (item==null) return player;
+        if (item == null) return player;
         Item[] wearItem = player.getWearItem();
-        if (wearItem[item.getPosition()]!=null) {
-         player = unequipe(player,user,wearItem[item.getPosition()].getId());
+        if (wearItem[item.getPosition()] != null) {
+            player = unequipe(player, user, wearItem[item.getPosition()].getId());
         }
         player.addItem(item);
         String s = getWearitem(player);
         user.getUserdetails().setWearingItems(s);
-         s = getItemList(player);
+        s = getItemList(player);
         user.getUserdetails().setItems(s);
         userDetailsDAO.update(user.getUserdetails());
-        return  player;
+        return player;
+    }
+
+    @Override
+    public Player playerGetType(String type) {
+        Player player;
+        switch (type) {
+            case "Warrior":
+                player = (Warrior) req.getSession().getAttribute("user");
+
+                break;
+            case "Rogue":
+                player = (Rogue) req.getSession().getAttribute("user");
+
+
+                break;
+            case "Mage":
+                player = (Mage) req.getSession().getAttribute("user");
+
+
+                break;
+            default:
+                player = null;
+
+                break;
+        }
+        return player;
     }
 }

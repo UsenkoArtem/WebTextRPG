@@ -16,8 +16,12 @@ import java.util.List;
 @EnableTransactionManagement
 public class UserDAOImp implements  UserDAO {
 
+    private final SessionFactory sessionFactory;
+
     @Autowired
-    private SessionFactory sessionFactory;
+    public UserDAOImp(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     private Session getSession(){
         return sessionFactory.getCurrentSession();

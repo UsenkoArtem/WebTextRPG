@@ -17,16 +17,18 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping(value = "/ajax")
 public class StatsController {
-    @Autowired
-    private PlayerDAO playerDAO;
+    private final PlayerDAO playerDAO;
+    private final HttpServletRequest req;
+    private final UserDAO userDAO;
+    private final UserDetailsDAO userDetailsDAO;
 
     @Autowired
-    private HttpServletRequest req;
-    @Autowired
-    private UserDAO userDAO;
-
-    @Autowired
-    private UserDetailsDAO userDetailsDAO;
+    public StatsController(PlayerDAO playerDAO, HttpServletRequest req, UserDAO userDAO, UserDetailsDAO userDetailsDAO) {
+        this.playerDAO = playerDAO;
+        this.req = req;
+        this.userDAO = userDAO;
+        this.userDetailsDAO = userDetailsDAO;
+    }
 
     @RequestMapping(value = "/strength", method = RequestMethod.GET)
     @ResponseBody

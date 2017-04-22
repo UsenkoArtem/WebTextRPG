@@ -21,11 +21,13 @@ public interface PlayerDAO {
 
     public String setItem(User user, int id);
 
-    Player deleteItem(Player player, User user , int id);
+    void deleteItem(Player player, User user , int id);
 
     Player unequipe(Player player, User user, int id);
 
     Player deleteEquipeItem(Player player, User user, int id);
 
     Player equip(Player player, User user, int id);
+
+    Player playerGetType(String type);
 }

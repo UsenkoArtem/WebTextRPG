@@ -15,14 +15,16 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("ajax/item")
 public class ItemsController {
-    @Autowired
-    private HttpServletRequest req;
+    private final HttpServletRequest req;
+    private final UserDAO userDAO;
+    private final PlayerDAO playerDAO;
 
     @Autowired
-    private UserDAO userDAO;
-
-    @Autowired
-    private PlayerDAO playerDAO;
+    public ItemsController(HttpServletRequest req, UserDAO userDAO, PlayerDAO playerDAO) {
+        this.req = req;
+        this.userDAO = userDAO;
+        this.playerDAO = playerDAO;
+    }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody

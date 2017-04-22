@@ -9,13 +9,15 @@ function lose() {
 }
 function headAttack( enemy) {
     debugger;
-    var table = document.getElementById("enemy");
-    var trs = table.rows;
-    var dataType =  table.rows[0];
-    var nodeValue = dataType.cells[1].innerHTML;
+    var enemyTable = document.getElementById("enemy");
+    var playerTable  = document.getElementById("player");
+    var enemyData =  enemyTable.rows[0];
+    var playerData =  playerTable.rows[0];
+    var enemyHealth = enemyData.cells[1].innerHTML;
+    var playerHealth = playerData.cells[1].innerHTML;
     var data = {};
-    data["health"] = nodeValue;
-    alert(enemy +  " " + nodeValue);
+    data["enemyHealth"] = enemyHealth;
+    data["playerHealth"] = playerHealth;
     alert(JSON.stringify(data));
     $.ajax({
         url: 'ajax/battle/head/'+ enemy,
@@ -30,6 +32,8 @@ function headAttack( enemy) {
             if (data["playerHealth"]<=0) {
                 return lose();
             }
+            enemyData.cells[1].innerText = data["enemyHealth"];
+            playerData.cells[1].innerText = data["playerHealth"];
 
     }
     })
