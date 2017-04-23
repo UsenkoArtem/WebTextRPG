@@ -7,7 +7,17 @@ public class Answer {
     private int enemyHealth;
     private int playerHealth;
     private String location;
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public Answer() {
+
     }
 
     public Answer(int health, int health1, String location) {

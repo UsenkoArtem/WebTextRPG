@@ -1,14 +1,15 @@
-function win() {
-if (confirm("You win")){
-    window.location.href = "http://localhost:3636/"}
+function win(location) {
+    debugger;
+alert("You win");
+    window.location.href = "http://localhost:3636/"+location;
 }
-function lose() {
-    if (confirm("You win")){
-        window.location.href = "http://localhost:3636/"
-    }
+function lose(location) {
+    debugger;
+    alert("You win");
+        window.location.href = "http://localhost:3636/"+location;
+
 }
 function headAttack( enemy) {
-    debugger;
     var enemyTable = document.getElementById("enemy");
     var playerTable  = document.getElementById("player");
     var enemyData =  enemyTable.rows[0];
@@ -18,7 +19,6 @@ function headAttack( enemy) {
     var data = {};
     data["enemyHealth"] = enemyHealth;
     data["playerHealth"] = playerHealth;
-    alert(JSON.stringify(data));
     $.ajax({
         url: 'ajax/battle/head/'+ enemy,
         contentType : "application/json",
@@ -26,11 +26,12 @@ function headAttack( enemy) {
         data : JSON.stringify(data),
         type: "Post",
         success: function(data){
+            debugger;
             if (data["enemyHealth"]<=0) {
-                return win();
+                return win(data["location"]);
             }
             if (data["playerHealth"]<=0) {
-                return lose();
+                return lose(data["location"]);
             }
             enemyData.cells[1].innerText = data["enemyHealth"];
             playerData.cells[1].innerText = data["playerHealth"];
@@ -40,45 +41,63 @@ function headAttack( enemy) {
 }
 
 function bodyAttack(enemy) {
-    debugger;
-    var table = document.getElementById("enemy");
-    var trs = table.rows;
-    var dataType = table.rows[0];
-    var nodeValue = dataType.cells[1].innerHTML;
+    var enemyTable = document.getElementById("enemy");
+    var playerTable  = document.getElementById("player");
+    var enemyData =  enemyTable.rows[0];
+    var playerData =  playerTable.rows[0];
+    var enemyHealth = enemyData.cells[1].innerHTML;
+    var playerHealth = playerData.cells[1].innerHTML;
     var data = {};
-    data["health"] = nodeValue;
-    alert(enemy + " " + nodeValue);
-    alert(JSON.stringify(data));
+    data["enemyHealth"] = enemyHealth;
+    data["playerHealth"] = playerHealth;
     $.ajax({
-        url: 'ajax/battle/head/' + enemy,
-        contentType: "application/json",
-        dataType: 'json',
-        data: JSON.stringify(data),
+        url: 'ajax/battle/body/'+ enemy,
+        contentType : "application/json",
+        dataType : 'json',
+        data : JSON.stringify(data),
         type: "Post",
-        success: function (data) {
-            alert("Okay");
+        success: function(data){
+            debugger;
+            if (data["enemyHealth"]<=0) {
+                return win(data["location"]);
+            }
+            if (data["playerHealth"]<=0) {
+                return lose(data["location"]);
+            }
+            enemyData.cells[1].innerText = data["enemyHealth"];
+            playerData.cells[1].innerText = data["playerHealth"];
+
         }
     })
 }
 
     function legsAttack(enemy) {
-        debugger;
-        var table=document.getElementById("enemy");
-        var trs=table.rows;
-        var dataType=table.rows[0];
-        var nodeValue=dataType.cells[1].innerHTML;
-        var data= {};
-        data["health"]=nodeValue;
-        alert(enemy + " " + nodeValue);
-        alert(JSON.stringify(data));
+        var enemyTable = document.getElementById("enemy");
+        var playerTable  = document.getElementById("player");
+        var enemyData =  enemyTable.rows[0];
+        var playerData =  playerTable.rows[0];
+        var enemyHealth = enemyData.cells[1].innerHTML;
+        var playerHealth = playerData.cells[1].innerHTML;
+        var data = {};
+        data["enemyHealth"] = enemyHealth;
+        data["playerHealth"] = playerHealth;
         $.ajax({
-            url: 'ajax/battle/head/'+ enemy,
+            url: 'ajax/battle/legs/'+ enemy,
             contentType : "application/json",
             dataType : 'json',
             data : JSON.stringify(data),
             type: "Post",
             success: function(data){
-                alert("Okay");
+                debugger;
+                if (data["enemyHealth"]<=0) {
+                    return win(data["location"]);
+                }
+                if (data["playerHealth"]<=0) {
+                    return lose(data["location"]);
+                }
+                enemyData.cells[1].innerText = data["enemyHealth"];
+                playerData.cells[1].innerText = data["playerHealth"];
+
             }
         })
 }

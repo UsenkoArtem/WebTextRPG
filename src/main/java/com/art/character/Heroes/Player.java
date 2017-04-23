@@ -145,7 +145,7 @@ public class Player extends Character {
     }
 
     private void levelUp() {
-        while (getExp() > getLevel() * 100) {
+        while (getExp() >= getLevel() * 100) {
             setExp(getExp() - getLevel() * 100);
             setLevel(getLevel() + 1);
             setPoint(getPoint() + 5);

@@ -37,10 +37,26 @@ public class Battle {
     }
 
     private void attackToHead(Player player, Enemy enemy) {
-        int playerAttack = (int) (player.getAttack() * 0.5 + player.getAttack() * 1.5 * Math.random() * 2);
+        int playerAttack = (int) (player.getAttack() * 0.5 + player.getAttack() * 1.5 * ((int) (Math.random() * 6) / 6));
         int enemyAttack = enemy.getAttack();
         this.player.setHealth((int) (player.getHealth() - enemyAttack + enemyAttack * (((0.06 * player.getDefense()) / (1 + 0.06 * player.getDefense())))));
-        this.enemy.setHealth((int) (enemy.getHealth() - playerAttack + playerAttack * ( ((0.06 * enemy.getDefense()) / (1 + 0.06 * enemy.getDefense())))));
+        this.enemy.setHealth((int) (enemy.getHealth() - playerAttack + playerAttack * (((0.06 * enemy.getDefense()) / (1 + 0.06 * enemy.getDefense())))));
+    }
+
+    private void attackToBody(Player player, Enemy enemy) {
+        int playerAttack = (int) (player.getAttack() * 0.5 + player.getAttack() * Math.random() * 4);
+        int enemyAttack = enemy.getAttack();
+        this.player.setHealth((int) (player.getHealth() - enemyAttack + enemyAttack * (((0.06 * player.getDefense()) / (1 + 0.06 * player.getDefense())))));
+        this.enemy.setHealth((int) (enemy.getHealth() - playerAttack + playerAttack * (((0.06 * enemy.getDefense()) / (1 + 0.06 * enemy.getDefense())))));
+
+    }
+
+    private void attackToLegs(Player player, Enemy enemy) {
+        int playerAttack = (int) (player.getAttack() * 0.5 + player.getAttack() * Math.random() * 3);
+        int enemyAttack = enemy.getAttack();
+        this.player.setHealth((int) (player.getHealth() - enemyAttack + enemyAttack * (((0.06 * player.getDefense()) / (1 + 0.06 * player.getDefense())))));
+        this.enemy.setHealth((int) (enemy.getHealth() - playerAttack + playerAttack * (((0.06 * enemy.getDefense()) / (1 + 0.06 * enemy.getDefense())))));
+
     }
 
     @RequestMapping(value = "/head/{enemyType}", method = RequestMethod.POST, produces = "application/json")
@@ -52,31 +68,61 @@ public class Battle {
         User bylogin = userDAO.findByLogin(name);
         player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
         int health = player.getHealth();
-        player.setHealth(battle.getEnemyHealth());
+        player.setHealth(battle.getPlayerHealth());
         attackToHead(player, enemy);
         if (enemy.getHealth() <= 0) {
             player.setHealth(health);
-            victory(enemy.getLevel() * 50, 20);
-            bylogin.getUserdetails().setLevel(player.getLevel());
-            bylogin.getUserdetails().setExp(player.getExp());
-            userDetailsDAO.update(bylogin.getUserdetails());
+            victory(enemy.getLevel() * 50, 20, bylogin);
         }
         return new Answer(player.getHealth(), enemy.getHealth(), location);
     }
 
 
-    @RequestMapping(value = "/body/{enemy}", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/body/{enemyType}", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
-    public String bodyAttack(@PathVariable String enemy, @RequestBody Answer answer) {
-        Enemy bean = (Enemy) applicationContext.getBean(enemy);
-        System.out.println(bean.toString());
-
-        return "11";
+    public Answer bodyAttack(@PathVariable String enemyType, @RequestBody Answer battle, @PathVariable("location") String location) {
+        enemy = (Enemy) applicationContext.getBean(enemyType);
+        enemy.setHealth(battle.getEnemyHealth());
+        String name = (String) req.getSession().getAttribute("name");
+        User bylogin = userDAO.findByLogin(name);
+        player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
+        int health = player.getHealth();
+        player.setHealth(battle.getPlayerHealth());
+        attackToBody(player, enemy);
+        if (enemy.getHealth() <= 0) {
+            player.setHealth(health);
+            victory(enemy.getLevel() * 50, 20, bylogin);
+        }
+        return new Answer(player.getHealth(), enemy.getHealth(), location);
     }
 
-    private void victory(int exp, int money) {
+    @RequestMapping(value = "/legs/{enemyType}", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public Answer legsAttack(@PathVariable String enemyType, @RequestBody Answer battle, @PathVariable("location") String location) {
+        enemy = (Enemy) applicationContext.getBean(enemyType);
+        enemy.setHealth(battle.getEnemyHealth());
+        String name = (String) req.getSession().getAttribute("name");
+        User bylogin = userDAO.findByLogin(name);
+        player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
+        int health = player.getHealth();
+        player.setHealth(battle.getPlayerHealth());
+        attackToLegs(player, enemy);
+        if (enemy.getHealth() <= 0) {
+            player.setHealth(health);
+            victory(enemy.getLevel() * 50, 20, bylogin);
+        }
+        return new Answer(player.getHealth(), enemy.getHealth(), location);
+    }
+
+
+    private void victory(int exp, int money, User bylogin) {
         player.addExp(exp);
         player.addMoney(money);
-
+        bylogin.getUserdetails().setLevel(player.getLevel());
+        bylogin.getUserdetails().setExp(player.getExp());
+        System.out.println(player.getPoint());
+        bylogin.getUserdetails().setPoint(player.getPoint());
+        userDetailsDAO.update(bylogin.getUserdetails());
+        req.getSession().setAttribute("user",player);
     }
 }
