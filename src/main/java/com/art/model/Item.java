@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by usenk on 04.05.2017.
  */
 @Entity
-@Table(schema = "heroku_88bfa4a183f9496" , name = "item")
+@Table(schema = "heroku_88bfa4a183f9496" , name = "Item")
 public class Item {
     private int id;
     private String name;

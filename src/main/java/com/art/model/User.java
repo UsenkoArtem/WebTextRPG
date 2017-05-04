@@ -8,7 +8,7 @@ import javax.persistence.*;
  * Created by Artem on 05.03.2017.
  */
 @Entity
-@Table(schema="heroku_88bfa4a183f9496",name = "user")
+@Table(schema="heroku_88bfa4a183f9496",name = "User")
 public class User {
     private int id;
     private String login;
