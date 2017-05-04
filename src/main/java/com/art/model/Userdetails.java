@@ -3,7 +3,7 @@ package com.art.model;
 import javax.persistence.*;
 
 @Entity
-@Table(schema = "heroku_88bfa4a183f9496",name = "Userdetails")
+@Table(schema = "heroku_88bfa4a183f9496",name = "userdetails")
 public class Userdetails {
     private int id;
     private int level;
