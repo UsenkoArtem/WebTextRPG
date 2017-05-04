@@ -29,6 +29,7 @@
           <unit-entry name="SessionFactory" value="0789c9d5-56b3-43d5-95ba-e7a1b2ecc1a3" />
         </datasource-map>
         <naming-strategy-map>
+          <unit-entry name="Session" />
           <unit-entry name="SessionFactory" />
         </naming-strategy-map>
       </configuration>
