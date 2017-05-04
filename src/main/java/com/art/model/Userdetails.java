@@ -3,6 +3,7 @@ package com.art.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "userdetails")
 public class Userdetails {
     private int id;
     private int level;
