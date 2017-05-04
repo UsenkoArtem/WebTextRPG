@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
@@ -20,14 +19,12 @@ import java.util.Properties;
 @PropertySource(value = {"classpath:App.properties"})
 @EnableTransactionManagement
 public class HibernateConfig {
-    @Autowired
-    private Environment environment;
 
     @Bean(name = "Session")
-    public LocalSessionFactoryBean SessionFactory () {
+    public LocalSessionFactoryBean SessionFactory (){
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("com.art.model");
+        sessionFactory.setPackagesToScan("WebApi");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return  sessionFactory;
     }
@@ -35,9 +32,9 @@ public class HibernateConfig {
 
     private Properties hibernateProperties() {
         Properties properties = new Properties();
-        properties.put("hibernate.dialect","org.hibernate.dialect.MySQLDialect");
-        properties.put("hibernate.show_sql","true");
-        properties.put("hibernate.format_sql", "true");
+        properties.put("hibernate.dialect","org.hibernate.dialect.MySQL5InnoDBDialect");
+        properties.put("hibernate.show_sql", "true");
+        properties.put("hibernate.format_sql","true");
         properties.put("hibernate.connection.autocommit","true");
         properties.put("connection.autoReconnect=true","true");
         properties.put("hibernate.autoReconnect","true");
@@ -68,6 +65,7 @@ public DataSource dataSource() {
     dataSource.setPassword(password);
     return dataSource;
 }
+
 
     @Bean
     @Autowired
