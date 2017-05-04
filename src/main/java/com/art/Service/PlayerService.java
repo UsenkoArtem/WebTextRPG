@@ -1,4 +1,4 @@
-package com.art.dao;
+package com.art.Service;
 
 
 import com.art.character.Heroes.Player;
@@ -8,7 +8,7 @@ import com.art.model.Userdetails;
 
 import java.util.List;
 
-public interface PlayerDAO {
+public interface PlayerService {
     public Player getPlayer(String type, String login, Userdetails userdetails);
 
     public String getWearitem(Player player);

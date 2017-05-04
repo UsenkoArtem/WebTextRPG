@@ -1,7 +1,7 @@
 package com.art.controller;
 
 import com.art.character.Heroes.Player;
-import com.art.dao.PlayerDAO;
+import com.art.Service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
@@ -14,13 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @ComponentScan({"com.art.dao"})
 public class InventoryController {
-    private final
-    PlayerDAO playerDAO;
+    private final PlayerService playerService;
     private final HttpServletRequest req;
 
     @Autowired
-    public InventoryController(PlayerDAO playerDAO, HttpServletRequest req) {
-        this.playerDAO = playerDAO;
+    public InventoryController(PlayerService playerService, HttpServletRequest req) {
+        this.playerService = playerService;
         this.req = req;
     }
 
@@ -30,10 +29,10 @@ public class InventoryController {
         String name = (String) req.getSession().getAttribute("name");
         if (name == null) return "redirect:/";
         String type = (String) req.getSession().getAttribute("type");
-        Player player = playerDAO.playerGetType(type);
+        Player player = playerService.playerGetType(type);
 
-        map.put("item", playerDAO.getWearItem(player));
-        map.put("items", playerDAO.getItem(player));
+        map.put("item", playerService.getWearItem(player));
+        map.put("items", playerService.getItem(player));
 
         map.put("Player", player);
         return "Inventory";

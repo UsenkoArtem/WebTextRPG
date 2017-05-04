@@ -3,7 +3,7 @@ package com.art.controller.ajaxController.battle;
 import com.art.character.Enemies.Enemy;
 import com.art.character.Heroes.Player;
 import com.art.classWrapper.Answer.Answer;
-import com.art.dao.PlayerDAO;
+import com.art.Service.PlayerService;
 import com.art.dao.UserDAO;
 import com.art.dao.UserDetailsDAO;
 import com.art.init.EnemyConfig;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public class Battle {
     private final UserDetailsDAO userDetailsDAO;
-    private final PlayerDAO playerDAO;
+    private final PlayerService playerService;
     private final HttpServletRequest req;
     private final UserDAO userDAO;
     private Player player = null;
@@ -29,8 +29,8 @@ public class Battle {
     private ApplicationContext applicationContext = new AnnotationConfigApplicationContext(EnemyConfig.class);
 
     @Autowired
-    public Battle(PlayerDAO playerDAO, HttpServletRequest req, UserDAO userDAO, UserDetailsDAO userDetailsDAO) {
-        this.playerDAO = playerDAO;
+    public Battle(PlayerService playerService, HttpServletRequest req, UserDAO userDAO, UserDetailsDAO userDetailsDAO) {
+        this.playerService = playerService;
         this.req = req;
         this.userDAO = userDAO;
         this.userDetailsDAO = userDetailsDAO;
@@ -66,7 +66,7 @@ public class Battle {
         enemy.setHealth(battle.getEnemyHealth());
         String name = (String) req.getSession().getAttribute("name");
         User bylogin = userDAO.findByLogin(name);
-        player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
+        player = playerService.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
         int health = player.getHealth();
         player.setHealth(battle.getPlayerHealth());
         attackToHead(player, enemy);
@@ -85,7 +85,7 @@ public class Battle {
         enemy.setHealth(battle.getEnemyHealth());
         String name = (String) req.getSession().getAttribute("name");
         User bylogin = userDAO.findByLogin(name);
-        player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
+        player = playerService.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
         int health = player.getHealth();
         player.setHealth(battle.getPlayerHealth());
         attackToBody(player, enemy);
@@ -99,11 +99,12 @@ public class Battle {
     @RequestMapping(value = "/legs/{enemyType}", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public Answer legsAttack(@PathVariable String enemyType, @RequestBody Answer battle, @PathVariable("location") String location) {
+
         enemy = (Enemy) applicationContext.getBean(enemyType);
         enemy.setHealth(battle.getEnemyHealth());
         String name = (String) req.getSession().getAttribute("name");
         User bylogin = userDAO.findByLogin(name);
-        player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
+        player = playerService.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
         int health = player.getHealth();
         player.setHealth(battle.getPlayerHealth());
         attackToLegs(player, enemy);

@@ -1,7 +1,7 @@
 package com.art.controller.battle;
 
 import com.art.character.Heroes.Player;
-import com.art.dao.PlayerDAO;
+import com.art.Service.PlayerService;
 import com.art.init.EnemyConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,20 +16,20 @@ import javax.servlet.http.HttpServletRequest;
 public class Woodland {
     private final EnemyConfig enemyConfig;
     private final HttpServletRequest req;
-    private final PlayerDAO playerDAO;
+    private final PlayerService playerService;
 
     @Autowired
-    public Woodland(EnemyConfig enemyConfig, HttpServletRequest req, PlayerDAO playerDAO) {
+    public Woodland(EnemyConfig enemyConfig, HttpServletRequest req, PlayerService playerService) {
         this.enemyConfig = enemyConfig;
         this.req = req;
-        this.playerDAO = playerDAO;
+        this.playerService = playerService;
     }
 
     @RequestMapping(value = "/bear", method = RequestMethod.GET)
     public String battleBear(ModelMap map) {
 
         String type = (String) req.getSession().getAttribute("type");
-        Player player = playerDAO.playerGetType(type);
+        Player player = playerService.playerGetType(type);
         if (player==null) return "redirect:/";
 
         map.put("Player", player);

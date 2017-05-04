@@ -3,7 +3,7 @@ package com.art.controller;
 import com.art.character.Heroes.Player;
 import com.art.classWrapper.Registration;
 import com.art.classWrapper.SignIn;
-import com.art.dao.PlayerDAO;
+import com.art.Service.PlayerService;
 import com.art.dao.UserDAO;
 import com.art.model.User;
 import com.art.model.Userdetails;
@@ -24,15 +24,15 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class UserController {
 
-    private final PlayerDAO playerDAO;
+    private final PlayerService playerService;
     private final HttpServletRequest req;
     private final UserDAO userDAO;
     private final SignInValidation signInValidation;
     private final RegValidation regValidation;
 
     @Autowired
-    public UserController(PlayerDAO playerDAO, HttpServletRequest req, UserDAO userDAO, SignInValidation signInValidation, RegValidation regValidation) {
-        this.playerDAO = playerDAO;
+    public UserController(PlayerService playerService, HttpServletRequest req, UserDAO userDAO, SignInValidation signInValidation, RegValidation regValidation) {
+        this.playerService = playerService;
         this.req = req;
         this.userDAO = userDAO;
         this.signInValidation = signInValidation;
@@ -54,7 +54,7 @@ public class UserController {
             return "SignIn";
         }
         User user = userDAO.findByLogin(signIn.getLogin());
-        Player player = playerDAO.getPlayer(user.getUserdetails().getType(),user.getLogin(), user.getUserdetails());
+        Player player = playerService.getPlayer(user.getUserdetails().getType(),user.getLogin(), user.getUserdetails());
         req.getSession().setAttribute("name", player.getName());
         req.getSession().setAttribute("type", player.getClass().getSimpleName());
         req.getSession().setAttribute("user", player);
@@ -83,7 +83,7 @@ public class UserController {
         userdetails.setStrenght(0);
         if (registration.getClassName().isEmpty()) registration.setClassName("Warrior");
         userdetails.setType(registration.getClassName());
-        Player player = playerDAO.getPlayer(userdetails.getType(),user.getLogin(),userdetails);
+        Player player = playerService.getPlayer(userdetails.getType(),user.getLogin(),userdetails);
         userdetails.setAgility(player.getAgility());
         userdetails.setStrenght(player.getStrength());
         userdetails.setIntelligence(player.getIntelligence());

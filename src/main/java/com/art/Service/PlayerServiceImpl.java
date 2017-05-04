@@ -1,27 +1,29 @@
-package com.art.dao;
+package com.art.Service;
 
 import com.art.character.Heroes.Mage;
 import com.art.character.Heroes.Player;
 import com.art.character.Heroes.Rogue;
 import com.art.character.Heroes.Warrior;
+import com.art.dao.ItemDAO;
+import com.art.dao.UserDetailsDAO;
 import com.art.model.Item;
 import com.art.model.User;
 import com.art.model.Userdetails;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository("PlayerDao")
-public class PlayerDAOImpl implements PlayerDAO {
+@Service("PlayerDao")
+public class PlayerServiceImpl implements PlayerService {
     private final UserDetailsDAO userDetailsDAO;
     private final ItemDAO itemDAO;
     private final HttpServletRequest req;
 
     @Autowired
-    public PlayerDAOImpl(UserDetailsDAO userDetailsDAO, ItemDAO itemDAO,HttpServletRequest req) {
+    public PlayerServiceImpl(UserDetailsDAO userDetailsDAO, ItemDAO itemDAO, HttpServletRequest req) {
         this.userDetailsDAO = userDetailsDAO;
         this.itemDAO = itemDAO;
         this.req = req;

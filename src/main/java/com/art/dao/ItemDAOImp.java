@@ -12,8 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 @EnableTransactionManagement
 public class ItemDAOImp implements  ItemDAO {
 
+    private final SessionFactory sessionFactory;
+
     @Autowired
-    private SessionFactory sessionFactory;
+    public ItemDAOImp(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     private Session getSession(){
         return sessionFactory.getCurrentSession();

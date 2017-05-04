@@ -1,7 +1,7 @@
 package com.art.controller.ajaxController.inventory;
 
 import com.art.character.Heroes.Player;
-import com.art.dao.PlayerDAO;
+import com.art.Service.PlayerService;
 import com.art.dao.UserDAO;
 import com.art.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +17,13 @@ import javax.servlet.http.HttpServletRequest;
 public class ItemsController {
     private final HttpServletRequest req;
     private final UserDAO userDAO;
-    private final PlayerDAO playerDAO;
+    private final PlayerService playerService;
 
     @Autowired
-    public ItemsController(HttpServletRequest req, UserDAO userDAO, PlayerDAO playerDAO) {
+    public ItemsController(HttpServletRequest req, UserDAO userDAO, PlayerService playerService) {
         this.req = req;
         this.userDAO = userDAO;
-        this.playerDAO = playerDAO;
+        this.playerService = playerService;
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
@@ -32,8 +32,8 @@ public class ItemsController {
         String name = (String) req.getSession().getAttribute("name");
         if (name == null ) return "redirect:/";
         User bylogin = userDAO.findByLogin(name);
-        Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
-        playerDAO.deleteItem(player, bylogin, id);
+        Player player = playerService.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
+        playerService.deleteItem(player, bylogin, id);
         req.getSession().setAttribute("user", player);
         return "okey";
     }
@@ -44,8 +44,8 @@ public class ItemsController {
         String name = (String) req.getSession().getAttribute("name");
         if (name == null ) return "redirect:/";
         User bylogin = userDAO.findByLogin(name);
-        Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
-         player = playerDAO.unequipe(player, bylogin, id);
+        Player player = playerService.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
+         player = playerService.unequipe(player, bylogin, id);
         req.getSession().setAttribute("user", player);
         return player.statsString();
     }
@@ -56,8 +56,8 @@ public class ItemsController {
         String name = (String) req.getSession().getAttribute("name");
         if (name == null ) return "redirect:/";
         User bylogin = userDAO.findByLogin(name);
-        Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
-        player = playerDAO.deleteEquipeItem(player, bylogin, id);
+        Player player = playerService.getPlayer(bylogin.getUserdetails().getType(), bylogin.getLogin(), bylogin.getUserdetails());
+        player = playerService.deleteEquipeItem(player, bylogin, id);
         req.getSession().setAttribute("user", player);
         return player.statsString();
     }
@@ -68,8 +68,8 @@ public class ItemsController {
         String name  = (String) req.getSession().getAttribute("name");
         if (name == null ) return "redirect:/";
         User bylogin = userDAO.findByLogin(name);
-        Player player = playerDAO.getPlayer(bylogin.getUserdetails().getType(),bylogin.getLogin(),bylogin.getUserdetails());
-        player = playerDAO.equip(player,bylogin,id);
+        Player player = playerService.getPlayer(bylogin.getUserdetails().getType(),bylogin.getLogin(),bylogin.getUserdetails());
+        player = playerService.equip(player,bylogin,id);
         req.getSession().setAttribute("user",player);
         return  player.statsString();
 

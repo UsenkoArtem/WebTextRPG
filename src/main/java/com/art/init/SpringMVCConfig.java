@@ -40,7 +40,7 @@ public class SpringMVCConfig extends WebMvcConfigurerAdapter {
     public CookieLocaleResolver getLocaleResolver() {
         CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
         cookieLocaleResolver.setDefaultLocale(new Locale("en"));
-        cookieLocaleResolver.setCookieMaxAge(100000);
+
         return cookieLocaleResolver;
     }
     @Bean
