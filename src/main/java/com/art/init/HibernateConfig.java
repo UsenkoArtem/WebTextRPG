@@ -24,7 +24,7 @@ public class HibernateConfig {
     public LocalSessionFactoryBean SessionFactory (){
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("WebApi");
+        sessionFactory.setPackagesToScan("com.art");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return  sessionFactory;
     }
