@@ -1,9 +1,11 @@
 package com.art.dao;
 
 import com.art.model.User;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -54,14 +56,15 @@ public class UserDAOImp implements  UserDAO {
     @Override
     public User findByLogin(String login) {
         if (login.isEmpty()) return  null;
-        Query query = getSession().createQuery(" FROM User  where login= :login ");
-        query.setString("login",login);
+        Criteria criteria = getSession().createCriteria(User.class)
+                .add(Restrictions.eq("login", 400));
         User user;
         try {
-             user = (User) query.uniqueResult();
-        } catch (NullPointerException e ) {
+            user = (User) criteria.list().get(0);
+        } catch (Exception ex) {
             user = null;
         }
+
         return  user;
     }
     @Override
