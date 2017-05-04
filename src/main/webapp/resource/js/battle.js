@@ -1,12 +1,12 @@
 function win(location) {
     debugger;
 alert("You win");
-    window.location.href = "http://localhost:3636/"+location;
+    window.location.href = "http://webtextrpg.herokuapp.com/"+location;
 }
 function lose(location) {
     debugger;
     alert("You win");
-        window.location.href = "http://localhost:3636/"+location;
+        window.location.href = "http://webtextrpg.herokuapp.com/"+location;
 
 }
 function headAttack( enemy) {
