@@ -2,7 +2,6 @@ package com.art.dao;
 
 import com.art.model.User;
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -38,10 +37,9 @@ public class UserDAOImp implements  UserDAO {
 
     @Override
     public User findById(int id) {
+        return (User) getSession().get(User.class, id);
 
-        return (User) getSession().get(User.class,id);
     }
-
     @Override
     public void addUser(User user) {
         sessionFactory.getCurrentSession().saveOrUpdate(user);
@@ -49,15 +47,15 @@ public class UserDAOImp implements  UserDAO {
 
     @Override
     public void deleteUser(int id) {
-        sessionFactory.getCurrentSession().createQuery("DELETE  from " +
-                "User WHERE id= "+id).executeUpdate();
+        getSession().delete(findById(id));
+
 
     }
     @Override
     public User findByLogin(String login) {
         if (login.isEmpty()) return  null;
         Criteria criteria = getSession().createCriteria(User.class)
-                .add(Restrictions.eq("login", 400));
+                .add(Restrictions.eq("login", login));
         User user;
         try {
             user = (User) criteria.list().get(0);
@@ -70,13 +68,13 @@ public class UserDAOImp implements  UserDAO {
     @Override
     public User findByEmail(String email) {
         if (email.isEmpty()) return  null;
-        Query query = getSession().createQuery("  FROM User  where email= :email");
-        query.setString("email",email);
+        Criteria criteria = getSession().createCriteria(User.class)
+                .add(Restrictions.eq("email", email));
 
         User user;
         try {
-            user = (User) query.uniqueResult();
-        } catch (NullPointerException e ) {
+            user = (User) criteria.list().get(0);
+        } catch (Exception e ) {
             user = null;
         }
         return  user;
