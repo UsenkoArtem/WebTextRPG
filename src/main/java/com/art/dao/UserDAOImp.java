@@ -15,7 +15,6 @@ import java.util.List;
 @Repository("UserDao")
 @Transactional
 @EnableTransactionManagement
-
 public class UserDAOImp implements  UserDAO {
 
     private final SessionFactory sessionFactory;
@@ -42,7 +41,7 @@ public class UserDAOImp implements  UserDAO {
     }
     @Override
     public void addUser(User user) {
-        sessionFactory.getCurrentSession().save(user);
+        sessionFactory.getCurrentSession().save("user",user);
     }
 
     @Override
