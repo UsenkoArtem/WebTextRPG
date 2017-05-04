@@ -3,23 +3,28 @@ package com.art.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "userdetails")
 public class Userdetails {
     private int id;
     private int level;
     private String type;
     private String items;
     private String wearingItems;
-
+    private Integer strenght;
+    private Integer vitality;
+    private Integer agility;
+    private Integer intelligence;
+    private User userById;
+    private int exp;
+    private int point;
     @Override
     public String toString() {
-        return "UserDetails{" +
+        return "Userdetails{" +
                 "id=" + id +
                 ", level=" + level +
                 ", type='" + type + '\'' +
                 ", items='" + items + '\'' +
                 ", wearingItems='" + wearingItems + '\'' +
-                ", strength=" + strenght +
+                ", strenght=" + strenght +
                 ", vitality=" + vitality +
                 ", agility=" + agility +
                 ", intelligence=" + intelligence +
@@ -29,13 +34,7 @@ public class Userdetails {
                 '}';
     }
 
-    private Integer strenght;
-    private Integer vitality;
-    private Integer agility;
-    private Integer intelligence;
-    private User userById;
-    private int exp;
-    private int point;
+
 
 
     @Id

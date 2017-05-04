@@ -1,9 +1,9 @@
 package com.art.controller.ajaxController.battle;
 
+import com.art.Service.PlayerService;
 import com.art.character.Enemies.Enemy;
 import com.art.character.Heroes.Player;
 import com.art.classWrapper.Answer.Answer;
-import com.art.Service.PlayerService;
 import com.art.dao.UserDAO;
 import com.art.dao.UserDetailsDAO;
 import com.art.init.EnemyConfig;

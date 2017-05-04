@@ -1,5 +1,7 @@
 package com.art.dao;
+
 import com.art.model.User;
+
 import java.util.List;
 
 public interface UserDAO {

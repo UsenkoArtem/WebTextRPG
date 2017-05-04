@@ -1,7 +1,7 @@
 package com.art.controller.ajaxController.inventory;
 
-import com.art.character.Heroes.Player;
 import com.art.Service.PlayerService;
+import com.art.character.Heroes.Player;
 import com.art.dao.UserDAO;
 import com.art.dao.UserDetailsDAO;
 import com.art.model.User;
