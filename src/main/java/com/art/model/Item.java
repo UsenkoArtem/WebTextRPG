@@ -3,7 +3,7 @@ package com.art.model;
 import javax.persistence.*;
 
 @Entity
-@Table(schema = "rpg",name = "item")
+@Table(name = "item")
 public class Item {
     private int id;
     private String name;
