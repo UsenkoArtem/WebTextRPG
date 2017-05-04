@@ -14,6 +14,7 @@ import java.util.List;
 @Repository("UserDao")
 @Transactional
 @EnableTransactionManagement
+
 public class UserDAOImp implements  UserDAO {
 
     private final SessionFactory sessionFactory;
@@ -50,7 +51,6 @@ public class UserDAOImp implements  UserDAO {
                 "User WHERE id= "+id).executeUpdate();
 
     }
-
     @Override
     public User findByLogin(String login) {
         if (login.isEmpty()) return  null;
