@@ -54,7 +54,7 @@ public class HibernateConfig {
 */
 @Bean
 public DataSource dataSource() {
-    String dbUrl = "jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_f163f738eafd43c?reconnect=true";
+    String dbUrl = System.getenv("JDBC_DATABASE_URL");
     String username = System.getenv("JDBC_DATABASE_USERNAME");
     String password = System.getenv("JDBC_DATABASE_PASSWORD");
 
