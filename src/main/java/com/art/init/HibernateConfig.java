@@ -35,7 +35,7 @@ public class HibernateConfig {
 
     private Properties hibernateProperties() {
         Properties properties = new Properties();
-        properties.put("hibernet.dialect","org.hibernate.dialect.MySQLDialect");
+        properties.put("hibernate.dialect","org.hibernate.dialect.MySQLDialect");
         properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
         properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
         properties.put("hibernate.connection.autocommit","true");
@@ -44,7 +44,7 @@ public class HibernateConfig {
         properties.put("hibernate.connection.pool_size=","10");
         return properties;
     }
-
+/**
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSourse = new DriverManagerDataSource();
@@ -54,6 +54,20 @@ public class HibernateConfig {
         dataSourse.setUrl(environment.getRequiredProperty("jdbc.url"));
     return dataSourse;
     }
+*/
+@Bean
+public DataSource dataSource() {
+    String dbUrl = System.getenv("JDBC_DATABASE_URL");
+    String username = System.getenv("JDBC_DATABASE_USERNAME");
+    String password = System.getenv("JDBC_DATABASE_PASSWORD");
+
+    DriverManagerDataSource dataSource = new DriverManagerDataSource();
+
+    dataSource.setUrl(dbUrl);
+    dataSource.setUsername(username);
+    dataSource.setPassword(password);
+    return dataSource;
+}
 
     @Bean
     @Autowired

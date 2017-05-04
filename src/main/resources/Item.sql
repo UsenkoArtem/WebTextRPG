@@ -8,7 +8,7 @@ CREATE TABLE item
     agility INT(11) NOT NULL,
     defense int(11) NOT NULL ,
     attack int (11) NOT NULL ,
-    heakth int (11) NOT NULL ,
+    health int (11) NOT NULL ,
     mana int (11) NOT NULL ,
     position INT(11) NOT NULL,
     price INT(11) NOT NULL,
