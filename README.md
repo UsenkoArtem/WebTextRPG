@@ -1,6 +1,8 @@
 # WebTextRPG
 Simple web text based RPG project
 
+Heroku https://webtextrpg.herokuapp.com
+
 Команда Crutch:
 1. Куршаков Михаил kurshakov.mihail@gmail.com
 2. Явтуховский Влад yavtukhovskiyv@gmail.com
