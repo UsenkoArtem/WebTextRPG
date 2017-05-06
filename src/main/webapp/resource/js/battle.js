@@ -5,7 +5,7 @@ alert("You win");
 }
 function lose(location) {
     debugger;
-    alert("You win");
+    alert("You lose");
         window.location.href = "http://webtextrpg.herokuapp.com/"+location;
 
 }
