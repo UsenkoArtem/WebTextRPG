@@ -47,7 +47,7 @@
             <li><b>Level 5</b></li>
             <li>Enemy description.</li>
             <br>
-            <li><b><a>Attack</a></b></li>
+            <li><b><a href="/battle/woodland/marauder">Attack</a></b></li>
         </ul>
     </div>
 
@@ -57,7 +57,7 @@
             <li><b>Level 5</b></li>
             <li>Enemy description</li>
             <br>
-            <li><b><a href="">Attack</a></b></li>
+            <li><b><a href="/battle/woodland/wolf">Attack</a></b></li>
         </ul>
     </div>
 
