@@ -34,18 +34,30 @@ public class Woodland {
 
         map.put("Player", player);
         map.put("Bear", enemyConfig.bear());
-        return "BattleBear";
+        return "/battle/woodland/BattleBear";
     }
 
     @RequestMapping(value = "/wolf", method = RequestMethod.GET)
     public String battleWolf(ModelMap map) {
+
+        String type = (String) req.getSession().getAttribute("type");
+        Player player = playerService.playerGetType(type);
+        if (player==null) return "redirect:/";
+
+        map.put("Player", player);
         map.put("Wolf", enemyConfig.wolf());
-        return "BattleWolf";
+        return "/battle/woodland/BattleWolf";
     }
 
     @RequestMapping(value = "/marauder", method = RequestMethod.GET)
     public String battleMarauder(ModelMap map) {
+
+        String type = (String) req.getSession().getAttribute("type");
+        Player player = playerService.playerGetType(type);
+        if (player==null) return "redirect:/";
+
+        map.put("Player", player);
         map.put("Marauder", enemyConfig.marauder());
-        return "BattleMarauder";
+        return "/battle/woodland/BattleMarauder";
     }
 }
