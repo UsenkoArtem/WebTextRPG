@@ -47,7 +47,9 @@ public class UserDAOImp implements  UserDAO {
 
     @Override
     public void deleteUser(int id) {
-        getSession().delete(findById(id));
+        User user = findById(id);
+        if (user!=null)
+        getSession().delete(user);
 
 
     }
