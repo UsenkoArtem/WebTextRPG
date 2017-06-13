@@ -20,13 +20,9 @@ import java.util.Properties;
 @PropertySource(value = {"classpath:App.properties"})
 @EnableTransactionManagement
 public class TestHibernateConfig {
-    private final
-    Environment environment;
-
     @Autowired
-    public TestHibernateConfig(Environment environment) {
-        this.environment = environment;
-    }
+    private Environment environment;
+
 
     @Bean(name = "Session")
     public LocalSessionFactoryBean SessionFactory (){

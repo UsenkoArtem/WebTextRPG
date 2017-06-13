@@ -21,11 +21,8 @@ import java.util.Properties;
 @PropertySource(value = {"classpath:App.properties"})
 @EnableTransactionManagement
 public class HibernateConfig {
-    private final Environment environment;
-
-    public HibernateConfig(Environment environment) {
-        this.environment = environment;
-    }
+    @Autowired
+    private Environment environment;
 
     @Bean(name = "Session")
     public LocalSessionFactoryBean SessionFactory() {
