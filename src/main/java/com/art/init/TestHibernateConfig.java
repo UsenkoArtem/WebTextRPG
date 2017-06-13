@@ -20,8 +20,14 @@ import java.util.Properties;
 @PropertySource(value = {"classpath:App.properties"})
 @EnableTransactionManagement
 public class TestHibernateConfig {
-    @Autowired
+    private final
     Environment environment;
+
+    @Autowired
+    public TestHibernateConfig(Environment environment) {
+        this.environment = environment;
+    }
+
     @Bean(name = "Session")
     public LocalSessionFactoryBean SessionFactory (){
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
