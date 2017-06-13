@@ -17,6 +17,7 @@ public class AppInit implements  WebApplicationInitializer {
         AnnotationConfigWebApplicationContext configWebApplicationContext = new AnnotationConfigWebApplicationContext();
         configWebApplicationContext.register(SpringMVCConfig.class);
         configWebApplicationContext.register(EnemyConfig.class);
+        configWebApplicationContext.register(HibernateConfig.class);
         configWebApplicationContext.setServletContext(servletContext);
         ServletRegistration.Dynamic servletRegistration = servletContext.addServlet(
                 "dispather",new DispatcherServlet(configWebApplicationContext));

@@ -7,9 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
@@ -20,6 +21,11 @@ import java.util.Properties;
 @PropertySource(value = {"classpath:App.properties"})
 @EnableTransactionManagement
 public class HibernateConfig {
+    private final Environment environment;
+
+    public HibernateConfig(Environment environment) {
+        this.environment = environment;
+    }
 
     @Bean(name = "Session")
     public LocalSessionFactoryBean SessionFactory() {
@@ -50,16 +56,16 @@ public class HibernateConfig {
         return properties;
     }
 
-    /**
-     * @Bean public DataSource dataSource() {
-     * DriverManagerDataSource dataSourse = new DriverManagerDataSource();
-     * dataSourse.setDriverClassName(environment.getRequiredProperty("jdbc.driverClass"));
-     * dataSourse.setUsername(environment.getRequiredProperty("jdbc.user"));
-     * dataSourse.setPassword(environment.getRequiredProperty("jdbc.pass"));
-     * dataSourse.setUrl(environment.getRequiredProperty("jdbc.url"));
-     * return dataSourse;
-     * }
-     */
+  /*
+      @Bean public DataSource dataSource() {
+      DriverManagerDataSource dataSourse = new DriverManagerDataSource();
+      dataSourse.setDriverClassName(environment.getRequiredProperty("jdbc.driverClass"));
+      dataSourse.setUsername(environment.getRequiredProperty("jdbc.user"));
+      dataSourse.setPassword(environment.getRequiredProperty("jdbc.pass"));
+      dataSourse.setUrl(environment.getRequiredProperty("jdbc.url"));
+      return dataSourse;
+      }
+*/
     @Bean
     public DataSource dataSource() {
         String dbUrl = System.getenv("JDBC_DATABASE_URL");
